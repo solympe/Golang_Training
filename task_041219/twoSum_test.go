@@ -29,7 +29,7 @@ func TestTwoSum (t *testing.T) {
 		}
 		// else does not work wtf
 		if reflect.DeepEqual(result, pairs.wait){
-			t.Log(pairs.input, "is correct! Expect:", pairs.wait, "Result:", result)
+			t.Log(pairs.input, "is correct! Expected:", pairs.wait, "Result:", result)
 		}
 	}
 }
