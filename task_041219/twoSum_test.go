@@ -27,7 +27,7 @@ func TestTwoSum (t *testing.T) {
 		if !reflect.DeepEqual(result, pairs.wait) {
 			t.Error("Error in", pairs.input, "Im waiting", pairs.wait, "but i have only", result)
 		}
-		// else does not work wtf
+		// else does not work wtf.
 		if reflect.DeepEqual(result, pairs.wait){
 			t.Log(pairs.input, "is correct! Expected:", pairs.wait, "Result:", result)
 		}
