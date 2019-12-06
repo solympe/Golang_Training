@@ -2,16 +2,14 @@ package main
 
 import (
 	"fmt"
-	"reflect"
-
-	//"reflect"
 	"strings"
+	"reflect"
 )
 
 func main() {
 
-	s := "ala"
-	t := "vaa"
+	s := "aada"
+	t := "daad"
 
 	answer := isIsomorphic(s, t)
 
@@ -19,26 +17,24 @@ func main() {
 }
 
 func isIsomorphic(s string, t string) bool {
-	m1 := createMap(s, t)
-	m2 := createMap(t, s)
-
-	fmt.Println(len(m1), len(m2))
-
-	if len(m1) != len(m2) {
-		return false
-	}
-	return true
+	m1 := createMap(s)
+	m2 := createMap(t)
+	return reflect.DeepEqual(m1, m2)
 }
 
-func createMap (s string, t string) map[string]string{
-	m := map[string]string{}
+func createMap (s string) []int{
+	m := map[string]int{}
 	one := strings.Split(s, "")
-	two := strings.Split(t, "")
+	intSlice := []int{}
 	for i := 0; i < len(one); i++ {
-		ok := m[one[i]]
-		if ok == "" {
-			m[one[i]] = two[i]
+		if m[one[i]] == 0 {
+			m[one[i]] = i + 1
+			intSlice = append(intSlice, m[one[i]])
+			continue
+		}
+		if m[one[i]] != 0 {
+			intSlice = append(intSlice, m[one[i]])
 		}
 	}
-	return m
+	return intSlice
 }
