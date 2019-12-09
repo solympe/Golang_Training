@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"strconv"
 	"time"
 )
 
@@ -14,26 +15,30 @@ type prorab struct {
 	channel chan string
 }
 
-func (p *prorab) checkWork() {
+func (p *prorab) checkWork(i int) {
 	for {
-		rand.Seed(86)
+		rand.Seed(time.Now().UnixNano())
+		n := rand.Intn(3)
+		time.Sleep(time.Duration(n) * time.Second)
+		p.channel <- "I am worker " + strconv.Itoa(i) + " and i finished my job in " + strconv.Itoa(n) + " seconds"
 
-		// need to change
-		time.Sleep(3 * time.Second)
-		p.channel <- "I ve done"
 	}
 }
 
 func main() {
 	countOfWorkers := 3
 	chanOfProrab := make(chan string,countOfWorkers)
+
 	proRab := prorab{channel:chanOfProrab}
 
-	go proRab.checkWork()
-	for countOfWorkers != 0{
-		i :=  <- chanOfProrab
-		fmt.Println(i)
-		countOfWorkers--
+	for i := 1; i <= countOfWorkers; i++ {
+	go proRab.checkWork(i)
 	}
+
+	for i := 1; i <= countOfWorkers; i++ {
+		i := <- chanOfProrab
+		fmt.Println(i)
+	}
+
 	defer close(chanOfProrab)
 }
