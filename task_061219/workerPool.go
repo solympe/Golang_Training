@@ -7,10 +7,6 @@ import (
 	"time"
 )
 
-//написать программу worker pool с использованием каналов, входные параметры - количество рабочих
-//у нас есть рабочие, которые начинают работу параллельно (время работы - рандомное число от 1 до 3 секунд),
-//затем они завершают работу и сдают свои результаты на проверку прорабу, который их принимает
-
 type prorab struct {
 	channel chan string
 }
@@ -20,7 +16,6 @@ func (p *prorab) checkWork(i int) {
 		n := rand.Intn(3)
 		time.Sleep(time.Duration(n) * time.Second)
 		p.channel <- "I am worker " + strconv.Itoa(i) + " and i finished my job in " + strconv.Itoa(n) + " seconds"
-
 }
 
 func main() {
