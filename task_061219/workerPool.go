@@ -16,13 +16,11 @@ type prorab struct {
 }
 
 func (p *prorab) checkWork(i int) {
-	for {
 		rand.Seed(time.Now().UnixNano())
 		n := rand.Intn(3)
 		time.Sleep(time.Duration(n) * time.Second)
 		p.channel <- "I am worker " + strconv.Itoa(i) + " and i finished my job in " + strconv.Itoa(n) + " seconds"
 
-	}
 }
 
 func main() {
