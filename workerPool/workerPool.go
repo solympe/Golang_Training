@@ -36,7 +36,6 @@ func main() {
 
 	for i := 1; i <= countOfWorkers; i++ {
 		i := <- chanOfMaster
-		fmt.Println(i)
 	}
 
 	defer close(chanOfMaster)
