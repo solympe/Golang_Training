@@ -24,20 +24,20 @@ func (p *prorab) checkWork(i int, wg *sync.WaitGroup) {
 func main() {
 	var wg sync.WaitGroup
 	countOfWorkers := 3
-	chanOfProrab := make(chan string,countOfWorkers)
+	chanOfMaster := make(chan string,countOfWorkers)
 
-	proRab := prorab{channel:chanOfProrab}
+	master := prorab{channel:chanOfMaster}
 
 	for i := 1; i <= countOfWorkers; i++ {
 		wg.Add(1)
-		go proRab.checkWork(i, &wg)
+		go master.checkWork(i, &wg)
 	}
 	wg.Wait()
 
 	for i := 1; i <= countOfWorkers; i++ {
-		i := <- chanOfProrab
+		i := <- chanOfMaster
 		fmt.Println(i)
 	}
 
-	defer close(chanOfProrab)
+	defer close(chanOfMaster)
 }
