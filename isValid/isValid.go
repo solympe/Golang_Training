@@ -4,8 +4,6 @@ import (
 	"fmt"
 )
 
-//Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
-
 func isValid(s string) bool {
 
 	if len(s) == 0 {
