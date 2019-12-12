@@ -2,47 +2,21 @@ package main
 
 import (
 	"fmt"
-	"github.com/solympe/Golang_Training/mergeTrees"
+	p "github.com/solympe/Golang_Training/patterns/patternChainOfResponsibility/delivery"
+	dc "github.com/solympe/Golang_Training/patterns/patternChainOfResponsibility/deliveryCourier"
+	dm "github.com/solympe/Golang_Training/patterns/patternChainOfResponsibility/deliveryMail"
+	dp "github.com/solympe/Golang_Training/patterns/patternChainOfResponsibility/deliveryPlane"
 )
 
 func main() {
 
-	br := mergeTrees.TreeNode{
-		Val:   4,
-		Left:  nil,
-		Right: nil,
-	}
+	chosenDelivery := "courier"
 
-	bl := mergeTrees.TreeNode{
-		Val:   1,
-		Left:  nil,
-		Right: nil,
-	}
+	var plane = dp.NewDelPlane()
+	var mail = dm.NewDelMail(plane)
+	var courier = dc.NewDelCourier(mail)
 
-	b0 := mergeTrees.TreeNode{
-		Val:   2,
-		Left:  &bl,
-		Right: &br,
-	}
 
-	trr := mergeTrees.TreeNode{
-		Val:   100,
-		Left:  nil,
-		Right: nil,
-	}
 
-	tr := mergeTrees.TreeNode{
-		Val:   3,
-		Left:  nil,
-		Right: &trr,
-	}
-
-	t0 := mergeTrees.TreeNode{
-		Val:   4,
-		Left:  nil,
-		Right: &tr,
-	}
-
-	fmt.Println("res: ", mergeTrees.MergeTrees(&t0, &b0), "is a head of tree")
-
+	fmt.Println(chosenDelivery)
 }
