@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"tasks/mergeTrees"
+	"github.com/solympe/Golang_Training/mergeTrees"
 )
 
 func main() {
@@ -43,6 +43,6 @@ func main() {
 		Right: &tr,
 	}
 
-	fmt.Println("res: ", mergeTrees.MergeTrees(&t0, &b0))
+	fmt.Println("res: ", mergeTrees.MergeTrees(&t0, &b0), "is a head of tree")
 
 }
