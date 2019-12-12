@@ -1,17 +1,20 @@
 package main
 
 import (
-	"tasks/patternProxy"
+	db "github.com/solympe/Golang_Training/patternProxy/dataBase"
+	dbn "github.com/solympe/Golang_Training/patternProxy/dbNode"
 )
 
 func main() {
 
-	var dataBase patternProxy.DBFunctions = patternProxy.NewDB()
-	var dbNode patternProxy.DBFunctions = patternProxy.NewDBNode()
+	var dataBaseOrig db.DBFunctions = db.NewDB("some data 1")
+	var dataBaseNode = dbn.NewDBNode(dataBaseOrig)
 
+	dataBaseOrig.GetData()
 
-	dbNode.SendData("some data")
+	dataBaseNode.SendData("some data 2")
+	dataBaseOrig.GetData()
 
-	dbNode.GetData()
-	dataBase.GetData()
+	dataBaseNode.SendData("some data 3")
+	dataBaseOrig.GetData()
 }
