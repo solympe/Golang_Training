@@ -7,17 +7,17 @@ type DBFunctions interface {
 }
 
 // data base struct (subject)
-type DataBase struct {
+type dataBase struct {
 	data string
 }
 
 // sending data to data base
-func (db *DataBase) SendData(data string) {
+func (db *dataBase) SendData(data string) {
 	db.data = data
 }
 
 // getting data from data base
-func (db *DataBase) GetData() string{
+func (db *dataBase) GetData() string{
 	if len(db.data) == 0 {
 		return ""
 	} else {
@@ -27,5 +27,5 @@ func (db *DataBase) GetData() string{
 
 // data base constructor
 func NewDB(data string) DBFunctions {
-	return &DataBase{data: data}
+	return &dataBase{data: data}
 }
