@@ -14,4 +14,4 @@ You can test this pattern in main.go
 
 P.S.<br>
 main.go location: ./main.go<br>
-packets location: ./patternProxy/* 
+packet location: .patterns/patternChainOfResponsibility/* 
