@@ -1,6 +1,9 @@
 package dbNode
 
-import db "github.com/solympe/Golang_Training/patternProxy/dataBase"
+import (
+	"fmt"
+	db "github.com/solympe/Golang_Training/patternProxy/dataBase"
+)
 
 // data base node struct (proxy)
 type dbNode struct {
@@ -14,8 +17,13 @@ func (n *dbNode) SendData(data string) {
 	n.cache = data               //update cache info
 }
 
-// getting data from proxy
+// validating cache data and sending to client
 func (n *dbNode) GetData() string{
+	freshData := db.DBFunctions.GetData()
+	fmt.Println("AAAAAAA", freshData)
+	if freshData != n.cache {
+		n.cache = freshData
+	}
 	return "Now my data is:" + n.cache
 }
 

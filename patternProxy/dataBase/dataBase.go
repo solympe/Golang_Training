@@ -20,9 +20,8 @@ func (db *dataBase) SendData(data string) {
 func (db *dataBase) GetData() string{
 	if len(db.data) == 0 {
 		return ""
-	} else {
-		return db.data
 	}
+	return db.data
 }
 
 // data base constructor
