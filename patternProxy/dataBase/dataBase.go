@@ -1,32 +1,31 @@
 package DataBase
 
-import "fmt"
-
 // common interface
 type DBFunctions interface {
-	GetData()
+	GetData() string
 	SendData(string)
 }
 
 // data base struct (subject)
-type dataBase struct {
+type DataBase struct {
 	data string
 }
 
 // sending data to data base
-func (db *dataBase) SendData(data string) {
+func (db *DataBase) SendData(data string) {
 	db.data = data
 }
 
 // getting data from data base
-func (db *dataBase) GetData() {
+func (db *DataBase) GetData() string{
 	if len(db.data) == 0 {
-		return
+		return ""
+	} else {
+		return db.data
 	}
-	fmt.Println("Now my data is:", db.data)
 }
 
 // data base constructor
 func NewDB(data string) DBFunctions {
-	return &dataBase{data: data}
+	return &DataBase{data: data}
 }
