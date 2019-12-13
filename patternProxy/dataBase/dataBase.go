@@ -1,4 +1,4 @@
-package DataBase
+package dataBase
 
 // common interface
 type DBFunctions interface {
