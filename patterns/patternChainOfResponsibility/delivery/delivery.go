@@ -1,5 +1,6 @@
 package patternChainOfResponsibility
 
+// common interface for handlers
 type TypeOfDelivery interface {
-	ChooseDelivery(chosen string)
+	ChooseType(chosen string) string
 }

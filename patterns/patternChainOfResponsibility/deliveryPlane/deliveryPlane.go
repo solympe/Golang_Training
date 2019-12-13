@@ -1,21 +1,17 @@
-package deliveryPlane
+package DeliveryPlane
 
-import (
-	"strings"
-)
+import "strings"
 
-type deliveryPlane struct {
+// 3rd handler struct
+type DeliveryPlane struct {
 }
 
-func (p *deliveryPlane) ChooseType(chosen string) (response string) {
-	if strings.ToLower(chosen) == "courier" {
-		response = "client choosed courier delivery"
+//checking type of delivery (if plane == true -> stop here) if this type is false -> return "error"
+func (d *DeliveryPlane) ChooseType(chosen string) (response string) {
+	if strings.ToLower(chosen) == "plane" {
+		response = "client choosed plane delivery"
 	} else if len(chosen) != 0 {
-		response = "Error!"
+		response = "Delivery type error!"
 	}
 	return response
-}
-
-func NewDelPlane() *deliveryPlane {
-	return &deliveryPlane{}
 }
