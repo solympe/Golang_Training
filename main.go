@@ -7,14 +7,13 @@ import (
 
 func main() {
 
-	var dataBaseOrig db.DBFunctions = db.NewDB("some data 1")
+	var dataBaseOrig = db.NewDB("some data 1")
 	var dataBaseNode = dbn.NewDBNode(dataBaseOrig)
-
-	dataBaseOrig.GetData()
+	dataBaseNode.GetData()
 
 	dataBaseNode.SendData("some data 2")
-	dataBaseOrig.GetData()
+	dataBaseNode.GetData()
 
 	dataBaseNode.SendData("some data 3")
-	dataBaseOrig.GetData()
+	dataBaseNode.GetData()
 }
