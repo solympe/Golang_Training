@@ -16,6 +16,10 @@ My result:<br>
 Runtime: 96 ms, faster than 74.04% of Go online submissions for Range Sum of BST.
 Memory Usage: 8.1 MB, less than 75.00% of Go online submissions for Range Sum of BST.
 
+last update (check commits):<br>
+Runtime: 92 ms, faster than 94.81% of Go online submissions for Range Sum of BST.
+Memory Usage: 8.3 MB, less than 50.00% of Go online submissions for Range Sum of BST.
+
 P.S.<br>
 Main location: ./main.go<br>
 File location: ./leetcode/rangeSumBST/*

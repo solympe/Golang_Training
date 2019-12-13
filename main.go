@@ -7,55 +7,27 @@ import (
 
 func main() {
 
-
-	tlr := rs.TreeNode{
-		Val:   6,
+	tr1 := rs.TreeNode{
+		Val:   32,
 		Left:  nil,
 		Right: nil,
 	}
 
-	tll2 := rs.TreeNode{
-		Val:   0,
-		Left:  &tlr,
-		Right: nil,
-	}
-
-	tll := rs.TreeNode{
-		Val:   18,
-		Left:  &tll2,
-		Right: nil,
-	}
-	trr3 := rs.TreeNode{
-		Val:   13,
-		Left:  &tll,
-		Right: nil,
-	}
-	trr2 := rs.TreeNode{
-		Val:   7,
+	tl := rs.TreeNode{
+		Val:   5,
 		Left:  nil,
-		Right: &trr3,
-	}
-	trr1 := rs.TreeNode{
-		Val:   3,
-		Left:  nil,
-		Right: &trr2,
-	}
-
-	trr := rs.TreeNode{
-		Val:   15,
-		Left:  nil,
-		Right: &trr1,
+		Right: nil,
 	}
 
 	tr := rs.TreeNode{
-		Val:   5,
+		Val:   15,
 		Left:  nil,
-		Right: &trr,
+		Right: &tr1,
 	}
 
 	t0 := rs.TreeNode{
 		Val:   10,
-		Left:  nil,
+		Left:  &tl,
 		Right: &tr,
 	}
 
