@@ -2,47 +2,65 @@ package main
 
 import (
 	"fmt"
-	"github.com/solympe/Golang_Training/mergeTrees"
+	rs "github.com/solympe/Golang_Training/leetcode/rangeSumBST"
 )
 
 func main() {
 
-	br := mergeTrees.TreeNode{
-		Val:   4,
+
+	tlr := rs.TreeNode{
+		Val:   6,
 		Left:  nil,
 		Right: nil,
 	}
 
-	bl := mergeTrees.TreeNode{
-		Val:   1,
-		Left:  nil,
+	tll2 := rs.TreeNode{
+		Val:   0,
+		Left:  &tlr,
 		Right: nil,
 	}
 
-	b0 := mergeTrees.TreeNode{
-		Val:   2,
-		Left:  &bl,
-		Right: &br,
-	}
-
-	trr := mergeTrees.TreeNode{
-		Val:   100,
-		Left:  nil,
+	tll := rs.TreeNode{
+		Val:   18,
+		Left:  &tll2,
 		Right: nil,
 	}
-
-	tr := mergeTrees.TreeNode{
+	trr3 := rs.TreeNode{
+		Val:   13,
+		Left:  &tll,
+		Right: nil,
+	}
+	trr2 := rs.TreeNode{
+		Val:   7,
+		Left:  nil,
+		Right: &trr3,
+	}
+	trr1 := rs.TreeNode{
 		Val:   3,
+		Left:  nil,
+		Right: &trr2,
+	}
+
+	trr := rs.TreeNode{
+		Val:   15,
+		Left:  nil,
+		Right: &trr1,
+	}
+
+	tr := rs.TreeNode{
+		Val:   5,
 		Left:  nil,
 		Right: &trr,
 	}
 
-	t0 := mergeTrees.TreeNode{
-		Val:   4,
+	t0 := rs.TreeNode{
+		Val:   10,
 		Left:  nil,
 		Right: &tr,
 	}
 
-	fmt.Println("res: ", mergeTrees.MergeTrees(&t0, &b0), "is a head of tree")
+	result := rs.RangeSumBST(&t0, 6, 10)
+
+	fmt.Println("Answer:", result)
 
 }
