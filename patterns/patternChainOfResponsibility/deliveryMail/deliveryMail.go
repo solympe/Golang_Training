@@ -5,17 +5,25 @@ import (
 	"strings"
 )
 
-// 2nd handler struct
+// mail handler struct
 type DeliveryMail struct {
 	NextType p.TypeOfDelivery
 }
 
 // checking type of delivery (if mail == true -> stop here)
-func (d *DeliveryMail) ChooseType(chosen string) (response string) {
+func (d *DeliveryMail) ChooseType(chosen string) string {
 	if strings.ToLower(chosen) == "mail" {
-		response = "client choosed mail delivery"
-	} else if len(chosen) != 0 {
-		response = d.NextType.ChooseType(chosen)
+		return "client choosed mail delivery"
+	} else if d.NextType != nil {
+		return d.NextType.ChooseType(chosen)
 	}
-	return response
+	return "Delivery type error"
+}
+
+// constructor for mail delivery
+func NewDMail(del p.TypeOfDelivery) p.TypeOfDelivery {
+	if del == nil {
+		return &DeliveryMail{NextType: nil}
+	}
+	return &DeliveryMail{NextType: del}
 }
