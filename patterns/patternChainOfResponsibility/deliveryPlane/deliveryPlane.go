@@ -1,8 +1,8 @@
 package DeliveryPlane
 
 import (
-	pp "github.com/solympe/Golang_Training/patterns/patternChainOfResponsibility/delivery"
 	"strings"
+	pp "github.com/solympe/Golang_Training/patterns/patternChainOfResponsibility/delivery"
 )
 
 // plane handler struct

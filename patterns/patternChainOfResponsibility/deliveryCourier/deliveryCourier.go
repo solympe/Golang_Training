@@ -1,8 +1,8 @@
 package DeliveryCourier
 
 import (
-	p "github.com/solympe/Golang_Training/patterns/patternChainOfResponsibility/delivery"
 	"strings"
+	p "github.com/solympe/Golang_Training/patterns/patternChainOfResponsibility/delivery"
 )
 
 // courier handler struct
