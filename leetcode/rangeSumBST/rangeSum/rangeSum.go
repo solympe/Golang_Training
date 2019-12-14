@@ -2,7 +2,7 @@ package rangeSum
 
 import bt "github.com/solympe/Golang_Training/leetcode/rangeSumBST/bTree"
 
-//count sum of tree for each element that >= L && <= R
+//RangeSum counts sum of tree for each element that >= L && <= R
 func RangeSum(root *bt.BTree, L int, R int) (sumBST int) {
 	val := bt.BTree.GetVal(*root)
 
