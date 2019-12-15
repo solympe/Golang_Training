@@ -1,33 +1,27 @@
 package dbNode
 
 import (
-	"fmt"
-	db "github.com/solympe/Golang_Training/patternProxy/dataBase"
+	df "github.com/solympe/Golang_Training/patternProxy/DBFunctions"
 )
 
-// data base node struct (proxy)
 type dbNode struct {
-	dataBase db.DBFunctions
-	cache string
+	cache    df.DBFunctions
+	dataBase df.DBFunctions
 }
 
-// sending data to proxy
+// SendData updates data in the main dataBase and cache
 func (n *dbNode) SendData(data string) {
-	n.dataBase.SendData(data)    //update dataBase info
-	n.cache = data               //update cache info
+	df.DBFunctions.SendData(n.cache, data)
+	df.DBFunctions.SendData(n.dataBase, data)
 }
 
-// validating cache data and sending to client
-func (n *dbNode) GetData() string{
-	freshData := db.DBFunctions.GetData()
-	fmt.Println("AAAAAAA", freshData)
-	if freshData != n.cache {
-		n.cache = freshData
-	}
-	return "Now my data is:" + n.cache
+// GetData returns 'fresh' data from cache
+func (n dbNode) GetData() string {
+	freshData := df.DBFunctions.GetData(n.cache)
+	return freshData
 }
 
-// proxy constructor
-func NewDBNode(datab db.DBFunctions) db.DBFunctions {
-	return &dbNode{datab, datab.GetData()}
+// NewDBNode returns new instance of dataBaseNode(proxy)
+func NewDBNode(cache df.DBFunctions, db df.DBFunctions) df.DBFunctions {
+	return &dbNode{cache, db}
 }

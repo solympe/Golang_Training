@@ -2,20 +2,20 @@ package main
 
 import (
 	"fmt"
+
+	c "github.com/solympe/Golang_Training/patternProxy/cache"
 	db "github.com/solympe/Golang_Training/patternProxy/dataBase"
 	dbn "github.com/solympe/Golang_Training/patternProxy/dbNode"
 )
 
 func main() {
+	var cache = c.NewCache()
+	var dataBaseOrig = db.NewDB(cache)
+	var dataBaseNode = dbn.NewDBNode(cache, dataBaseOrig)
 
-	var dataBaseOrig = db.NewDB("some data 1")
-	var dataBaseNode = dbn.NewDBNode(dataBaseOrig)
-	fmt.Println(dataBaseNode.GetData())
+	dataBaseOrig.SendData("new data")
+	fmt.Println(dataBaseNode.GetData(), "=", dataBaseOrig.GetData())
 
-	dataBaseNode.SendData("some data 2")
-	fmt.Println(dataBaseNode.GetData())
-
-	dataBaseNode.SendData("some data 3")
-	fmt.Println(dataBaseNode.GetData())
-
+	dataBaseNode.SendData("new data 2")
+	fmt.Println(dataBaseNode.GetData(), "=", dataBaseOrig.GetData())
 }

@@ -1,30 +1,26 @@
 package dataBase
 
-// common interface
-type DBFunctions interface {
-	GetData() string
-	SendData(string)
-}
+import (
+	df "github.com/solympe/Golang_Training/patternProxy/DBFunctions"
+)
 
-// data base struct (subject)
 type dataBase struct {
-	data string
+	data  string
+	cache df.DBFunctions
 }
 
-// sending data to data base
+// SendData updates data in the main dataBase and cache
 func (db *dataBase) SendData(data string) {
 	db.data = data
+	df.DBFunctions.SendData(db.cache, data)
 }
 
-// getting data from data base
-func (db *dataBase) GetData() string{
-	if len(db.data) == 0 {
-		return ""
-	}
+// GetData returns data from main dataBase
+func (db dataBase) GetData() string {
 	return db.data
 }
 
-// data base constructor
-func NewDB(data string) DBFunctions {
-	return &dataBase{data: data}
+// NewDB returns new instance of main dataBase
+func NewDB(cache df.DBFunctions) df.DBFunctions {
+	return &dataBase{cache: cache}
 }
