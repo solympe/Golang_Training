@@ -9,17 +9,17 @@ import (
 func main() {
 
 	n4 := rl.ListNode {
-		Val: 10,
+		Val: 40,
 		Next: nil,
 	}
 
 	n3 := rl.ListNode {
-		Val: 10,
+		Val: 30,
 		Next: &n4,
 	}
 
 	n2 := rl.ListNode {
-		Val: 10,
+		Val: 20,
 		Next: &n3,
 	}
 
@@ -28,8 +28,6 @@ func main() {
 		Next: &n2,
 	}
 
-
-	fmt.Println(n1)
-
+	fmt.Println(rl.ReverseList(&n1))
 
 }
