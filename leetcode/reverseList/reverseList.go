@@ -1,20 +1,23 @@
 package reverseList
 
-import "fmt"
+import lf "github.com/solympe/Golang_Training/leetcode/reverseList/listNode"
 
-// ListNode is a definition for singly-linked list.
- type ListNode struct {
-    Val int
-    Next *ListNode
-}
+func ReverseList(head *lf.ListFunctions) *lf.ListFunctions {
+    next := lf.ListFunctions.GetNext(*head)
 
-func ReverseList(head *ListNode) *ListNode {
-    fmt.Println(head.Val)
-    if head == nil || head.Next == nil {
-        return head
-    }
-    revPoint := ReverseList(head.Next)
-    head.Next.Next = head
-    head.Next = nil
-    return revPoint
+	if head == nil || next == nil {
+		return head
+	}
+	revPoint := ReverseList(&next)
+
+	//head.Next.Next = head
+	next.GetNext() = nil
+	//nn := lf.ListFunctions.GetNext(*head)
+    //nn = *head
+    lf.AfterNext(head)
+
+    //head.Next = nil
+	lf.ListFunctions.NillNext(*head)
+
+	return revPoint
 }
