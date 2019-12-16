@@ -1,35 +1,21 @@
 package main
 
 import (
-	"fmt"
-
-	rl "github.com/solympe/Golang_Training/leetcode/reverseList"
+	np "github.com/solympe/Golang_Training/patterns/pObserver/newsPortal"
+	s "github.com/solympe/Golang_Training/patterns/pObserver/subscribers"
 )
 
 func main() {
 
-	n4 := rl.ListNode {
-		Val: 10,
-		Next: nil,
-	}
+	newsPortal := np.NewPortal()
+	subscriber := s.NewSubscriber("John")
+	subscriber2 := s.NewSubscriber("Jake")
 
-	n3 := rl.ListNode {
-		Val: 10,
-		Next: &n4,
-	}
+	subscriber.Subscribe(newsPortal)
+	subscriber2.Subscribe(newsPortal)
 
-	n2 := rl.ListNode {
-		Val: 10,
-		Next: &n3,
-	}
+	newsPortal.ShowSubscribers()
 
-	n1 := rl.ListNode {
-		Val: 10,
-		Next: &n2,
-	}
-
-
-	fmt.Println(n1)
-
+	subscriber.Unsubscribe()
 
 }
