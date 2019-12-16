@@ -16,5 +16,6 @@ func main() {
 	n1 := lf.NewNode(1, &n2)
 
 	fmt.Println(rl.ReverseList(&n1))
+	fmt.Println(n1)
 
 }

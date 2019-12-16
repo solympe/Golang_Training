@@ -22,10 +22,7 @@ func (l *listNode) NillNext() {
 
 //
 func AfterNext(head *ListFunctions) {
-	saver := head
-	*head = ListFunctions.GetNext(*head)
-	*head = ListFunctions.GetNext(*head)
-	head = saver
+//	head.
 }
 
 // NewNode returns new element of list
