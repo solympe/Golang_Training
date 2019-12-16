@@ -1,31 +1,28 @@
 package listNode
 
-type ListFunctions interface {
-	GetNext() ListFunctions
-	NillNext()
+// List represents interface of list
+type List interface {
+	ReverseList(head *listNode) *listNode
 }
 
-// listNode is a structure of node
+// listNode represents list struct
 type listNode struct {
 	Val  int
-	Next *ListFunctions
+	Next *listNode
 }
 
-// GetNext returns next element of list
-func (l *listNode) GetNext() ListFunctions {
-	return *l.Next
-}
-
-func (l *listNode) NillNext() {
-	l.Next = nil
-}
-
-//
-func AfterNext(head *ListFunctions) {
-//	head.
+// ReverseList return
+func ReverseList(head *listNode) *listNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	revPoint := ReverseList(head.Next)
+	head.Next.Next = head
+	head.Next = nil
+	return revPoint
 }
 
 // NewNode returns new element of list
-func NewNode(val int, next *ListFunctions) ListFunctions {
+func NewNode(val int, next *listNode) *listNode {
 	return &listNode{val, next}
 }
