@@ -2,47 +2,34 @@ package main
 
 import (
 	"fmt"
-	"github.com/solympe/Golang_Training/mergeTrees"
+
+	rl "github.com/solympe/Golang_Training/leetcode/reverseList"
 )
 
 func main() {
 
-	br := mergeTrees.TreeNode{
-		Val:   4,
-		Left:  nil,
-		Right: nil,
+	n4 := rl.ListNode {
+		Val: 10,
+		Next: nil,
 	}
 
-	bl := mergeTrees.TreeNode{
-		Val:   1,
-		Left:  nil,
-		Right: nil,
+	n3 := rl.ListNode {
+		Val: 10,
+		Next: &n4,
 	}
 
-	b0 := mergeTrees.TreeNode{
-		Val:   2,
-		Left:  &bl,
-		Right: &br,
+	n2 := rl.ListNode {
+		Val: 10,
+		Next: &n3,
 	}
 
-	trr := mergeTrees.TreeNode{
-		Val:   100,
-		Left:  nil,
-		Right: nil,
+	n1 := rl.ListNode {
+		Val: 10,
+		Next: &n2,
 	}
 
-	tr := mergeTrees.TreeNode{
-		Val:   3,
-		Left:  nil,
-		Right: &trr,
-	}
 
-	t0 := mergeTrees.TreeNode{
-		Val:   4,
-		Left:  nil,
-		Right: &tr,
-	}
+	fmt.Println(n1)
 
-	fmt.Println("res: ", mergeTrees.MergeTrees(&t0, &b0), "is a head of tree")
 
 }
