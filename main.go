@@ -4,7 +4,6 @@ import (
 	pm "github.com/solympe/Golang_Training/patterns/pMediator"
 	h "github.com/solympe/Golang_Training/patterns/pMediator/helicopter"
 	p "github.com/solympe/Golang_Training/patterns/pMediator/plane"
-
 )
 
 func main() {
@@ -16,8 +15,9 @@ func main() {
 	plane.GetMediator(airport)
 	helicopter.GetMediator(airport)
 
-	plane.DelayFlight("delay plane", 1)
-	helicopter.DelayFlight("delay helicopter", 1)
+	plane.DelayFlight(3)
+	helicopter.DelayFlight(1)
 
+	airport.ShowStatistic()
 
 }

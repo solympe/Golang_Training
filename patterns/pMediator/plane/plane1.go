@@ -1,27 +1,40 @@
 package plane
 
 import (
+	"fmt"
+	"strconv"
+
+	af "github.com/solympe/Golang_Training/patterns/pMediator/Aeroflot"
 	ap "github.com/solympe/Golang_Training/patterns/pMediator/Airport"
 )
 
+// plane is a one of the colleague
 type plane struct {
-	mediator        ap.Airport
-	departureDelay  int
+	mediator       ap.Airport
+	departureDelay int
 }
 
-func (p *plane) GetMediator (airport ap.Airport) {
+// GetMediator sets mediator of plane
+func (p *plane) GetMediator(airport ap.Airport) {
 	p.mediator = airport
 }
 
-func (p *plane) DelayFlight(message string, delay int) {
-	p.mediator.Notify(message, delay)
+// DelayFlight sends notify to mediator with delay time
+func (p *plane) DelayFlight(delay int) {
+	p.mediator.Notify("delay plane", delay)
+}
+
+// AddDelay add common delay time to plane
+func (p *plane) AddDelay(delay int) {
 	p.departureDelay += delay
 }
 
-func (p *plane) CancelFlight(message string) {
-	p.mediator.Notify(message, p.departureDelay)
+// PrintDelay returns info about planes delay
+func (p *plane) PrintDelay() {
+	fmt.Println("Plane delay: " + strconv.Itoa(p.departureDelay) + " hours")
 }
 
-func NewPlane() ap.Aeroflot {
+// NewHelicopter returns copy of new helicopter
+func NewPlane() af.Aeroflot {
 	return &plane{}
 }

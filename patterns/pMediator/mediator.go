@@ -1,27 +1,35 @@
 package pMediator
 
 import (
-	"fmt"
-	"strconv"
-
+	af "github.com/solympe/Golang_Training/patterns/pMediator/Aeroflot"
 	ap "github.com/solympe/Golang_Training/patterns/pMediator/Airport"
 )
 
+// airport is a mediator struct
 type airport struct {
-	plane      *ap.Aeroflot
-	helicopter *ap.Aeroflot
+	plane      *af.Aeroflot
+	helicopter *af.Aeroflot
 }
 
-// добавить распознавание отправителя
-func (a *airport) Notify( message string, delay int) {
+// Notify gets messages from aeroflot and delays departure
+func (a *airport) Notify(message string, delay int) {
 	if message == "delay plane" {
-		fmt.Println("Plane departure will delay on " + strconv.Itoa(delay) + " hours")
+		af.Aeroflot.AddDelay(*a.plane, delay)
+		af.Aeroflot.AddDelay(*a.helicopter, delay+2)
 	}
 	if message == "delay helicopter" {
-		fmt.Println("Helicopter departure will delay on " + strconv.Itoa(delay) + " hours")
+		af.Aeroflot.AddDelay(*a.helicopter, delay)
+		af.Aeroflot.AddDelay(*a.plane, delay+1)
 	}
 }
 
-func NewAirport(plane *ap.Aeroflot, helicopter *ap.Aeroflot) ap.Airport {
+// ShowStatistic prints information about delay
+func (a *airport) ShowStatistic() {
+	af.Aeroflot.PrintDelay(*a.helicopter)
+	af.Aeroflot.PrintDelay(*a.plane)
+}
+
+// NewAirport returns new copy of Airport
+func NewAirport(plane *af.Aeroflot, helicopter *af.Aeroflot) ap.Airport {
 	return &airport{plane, helicopter}
 }
