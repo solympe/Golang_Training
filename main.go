@@ -2,16 +2,17 @@ package main
 
 import (
 	"fmt"
-	is "github.com/solympe/Golang_Training/leetcode/interselect"
-
+	s "github.com/solympe/Golang_Training/leetcode/interselect/slice"
+	ss "github.com/solympe/Golang_Training/leetcode/interselect/SliceSolver"
 )
 
 func main() {
 
-	first := is.NewSlice([]int{1,2,2,1})
-	second := is.NewSlice([]int{2})
+	var first = s.NewSlice([]int{1,2,2,1})
+	var second = s.NewSlice([]int{2})
 
 
-	result := is.Intersect(first.GetSlice(), second.GetSlice())
+
+	result := s.Intersect(ss.SliceSolver.GetSlice(first), ss.SliceSolver.GetSlice(second))
 	fmt.Println(result)
 }
