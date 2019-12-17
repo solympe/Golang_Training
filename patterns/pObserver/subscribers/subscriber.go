@@ -1,24 +1,27 @@
 package subscribers
 
 import (
+	"fmt"
+
 	sn "github.com/solympe/Golang_Training/patterns/pObserver/subscription"
 )
 
+// subscribe represents subscriber interface
 type subscriber struct {
-	name       string
-	newsPortal *sn.News
+	name string
 }
 
-func (s *subscriber) Subscribe(portal sn.News) {
-	s.newsPortal = &portal
-	sn.News.AddSubscriber(portal, s, s.name)
+// GetName return subscriber`s name
+func (s *subscriber) GetName() string {
+	return s.name
 }
 
-func (s *subscriber) Unsubscribe() {
-	s.newsPortal = nil
-	sn.News.DeleteSubscriber(*s.newsPortal, s)
+// GetNotify returns recieved message
+func (s *subscriber) GetNotify(message string) {
+	fmt.Println("I am " + s.name + " and i received " + message)
 }
 
+// NewSubscriber returns new copy of subscriber
 func NewSubscriber(name string) sn.Subscriber {
 	return &subscriber{name: name}
 }

@@ -11,11 +11,14 @@ func main() {
 	subscriber := s.NewSubscriber("John")
 	subscriber2 := s.NewSubscriber("Jake")
 
-	subscriber.Subscribe(newsPortal)
-	subscriber2.Subscribe(newsPortal)
+	newsPortal.AddSubscriber(subscriber)
+	newsPortal.AddSubscriber(subscriber2)
 
 	newsPortal.ShowSubscribers()
 
-	subscriber.Unsubscribe()
+	newsPortal.DeleteSubscriber(subscriber)
 
+	newsPortal.ShowSubscribers()
+
+	newsPortal.Notify("Something")
 }
