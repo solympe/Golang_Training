@@ -2,16 +2,13 @@ package main
 
 import (
 	"fmt"
-
-	lf "github.com/solympe/Golang_Training/leetcode/reverseList/listNode"
+	s "github.com/solympe/Golang_Training/leetcode/interselect/slice"
 )
 
 func main() {
-	n5 := lf.NewNode(5, nil)
-	n4 := lf.NewNode(4, n5)
-	n3 := lf.NewNode(3, n4)
-	n2 := lf.NewNode(2, n3)
-	n1 := lf.NewNode(1, n2)
+	var first = s.NewSlice([]int{1, 2, 2, 1, 4, 6})
+	var second = s.NewSlice([]int{2, 5, 4, 6})
 
-	fmt.Println(lf.ReverseList(n1))
+	result := s.Intersect(first.GetSlice(), second.GetSlice())
+	fmt.Println(result)
 }
