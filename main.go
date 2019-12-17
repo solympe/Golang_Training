@@ -13,11 +13,9 @@ func main() {
 
 	newsPortal.AddSubscriber(subscriber)
 	newsPortal.AddSubscriber(subscriber2)
-
 	newsPortal.ShowSubscribers()
 
 	newsPortal.DeleteSubscriber(subscriber)
-
 	newsPortal.ShowSubscribers()
 
 	newsPortal.Notify("Something")
