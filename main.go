@@ -2,16 +2,20 @@ package main
 
 import (
 	"fmt"
-
-	lf "github.com/solympe/Golang_Training/leetcode/reverseList/listNode"
+	h "github.com/solympe/Golang_Training/patterns/pMemento/history"
+	p "github.com/solympe/Golang_Training/patterns/pMemento/palette"
 )
 
 func main() {
-	n5 := lf.NewNode(5, nil)
-	n4 := lf.NewNode(4, n5)
-	n3 := lf.NewNode(3, n4)
-	n2 := lf.NewNode(2, n3)
-	n1 := lf.NewNode(1, n2)
+	pallete := p.NewPalette()
+	history := h.NewHistory()
+	pallete.SetHistory(history)
 
-	fmt.Println(lf.ReverseList(n1))
+	pallete.SetColor("red")
+	pallete.SetColor("green")
+
+	fmt.Println(pallete.GetColor())
+	pallete.SetPreviousColor()
+	fmt.Println(pallete.GetColor())
+
 }
