@@ -26,7 +26,7 @@ func (s *slice) GetSlice() []int {
 	return s.data
 }
 
-// NewSlice
+// NewSlice returns new copy of slice
 func NewSlice(sliceIn []int) ss.SliceSolver {
 	return &slice{data: sliceIn}
 }
