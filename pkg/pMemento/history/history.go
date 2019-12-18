@@ -11,7 +11,7 @@ type history struct {
 	palette      palleteChanger.PaletteChanger
 }
 
-// Save color adds new color into the stack
+// SaveColor adds new color into the stack
 func (h *history) SaveColor(color string) {
 	h.historyStack = append(h.historyStack, color)
 }
