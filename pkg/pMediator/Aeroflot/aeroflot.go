@@ -1,11 +1,13 @@
 package aeroflot
 
-import ap "github.com/solympe/Golang_Training/patterns/pMediator/Airport"
+import (
+	"github.com/solympe/Golang_Training/pkg/pMediator/Airport"
+)
 
 // Aeroflot is a colleagues interface
 type Aeroflot interface {
 	DelayFlight(delay int)
-	GetMediator(airport ap.Airport)
+	GetMediator(airport airport.Airport)
 	AddDelay(delay int)
 	PrintDelay()
 }

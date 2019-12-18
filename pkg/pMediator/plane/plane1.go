@@ -4,18 +4,18 @@ import (
 	"fmt"
 	"strconv"
 
-	af "github.com/solympe/Golang_Training/patterns/pMediator/Aeroflot"
-	ap "github.com/solympe/Golang_Training/patterns/pMediator/Airport"
+	"github.com/solympe/Golang_Training/pkg/pMediator/Aeroflot"
+	"github.com/solympe/Golang_Training/pkg/pMediator/Airport"
 )
 
 // plane is a one of the colleague
 type plane struct {
-	mediator       ap.Airport
+	mediator       airport.Airport
 	departureDelay int
 }
 
 // GetMediator sets mediator of plane
-func (p *plane) GetMediator(airport ap.Airport) {
+func (p *plane) GetMediator(airport airport.Airport) {
 	p.mediator = airport
 }
 
@@ -35,6 +35,6 @@ func (p *plane) PrintDelay() {
 }
 
 // NewHelicopter returns copy of new helicopter
-func NewPlane() af.Aeroflot {
+func NewPlane() aeroflot.Aeroflot {
 	return &plane{}
 }
