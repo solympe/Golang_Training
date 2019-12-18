@@ -1,11 +1,13 @@
 package palleteChanger
 
-import h "github.com/solympe/Golang_Training/patterns/pMemento/historyService"
+import (
+	"github.com/solympe/Golang_Training/pkg/pMemento/historyService"
+)
 
 // PaletteChanger represents palette interface
 type PaletteChanger interface {
 	SetColor(color string)
 	GetColor() (color string)
-	SetHistory(historyIn h.HistoryService)
+	SetHistory(historyIn historyService.HistoryService)
 	SetPreviousColor()
 }

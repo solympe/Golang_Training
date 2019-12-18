@@ -1,14 +1,14 @@
 package history
 
 import (
-	h "github.com/solympe/Golang_Training/patterns/pMemento/historyService"
-	p "github.com/solympe/Golang_Training/patterns/pMemento/palleteChanger"
+	"github.com/solympe/Golang_Training/pkg/pMemento/historyService"
+	"github.com/solympe/Golang_Training/pkg/pMemento/palleteChanger"
 )
 
 // history represents history struct
 type history struct {
 	historyStack []string
-	palette      p.PaletteChanger
+	palette      palleteChanger.PaletteChanger
 }
 
 // Save color adds new color into the stack
@@ -32,6 +32,6 @@ func (h *history) ExtractColor() string {
 }
 
 // NewHistory returns new copy of history
-func NewHistory() h.HistoryService {
+func NewHistory() historyService.HistoryService {
 	return &history{historyStack: []string{}}
 }

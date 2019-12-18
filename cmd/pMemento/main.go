@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	h "github.com/solympe/Golang_Training/patterns/pMemento/history"
-	p "github.com/solympe/Golang_Training/patterns/pMemento/palette"
+
+	h "github.com/solympe/Golang_Training/pkg/pMemento/history"
+	p "github.com/solympe/Golang_Training/pkg/pMemento/palette"
 )
 
 func main() {
