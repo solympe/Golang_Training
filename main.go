@@ -2,13 +2,12 @@ package main
 
 import (
 	"fmt"
-	s "github.com/solympe/Golang_Training/leetcode/interselect/slice"
+	td "github.com/solympe/Golang_Training/leetcode/numIslands/tdArray"
 )
 
 func main() {
-	var first = s.NewSlice([]int{1, 2, 2, 1, 4, 6})
-	var second = s.NewSlice([]int{2, 5, 4, 6})
+	arr := td.NewtdArray([][]byte{{1, 1, 0, 0, 0}, {1, 1, 0, 0, 0}, {0, 0, 1, 0, 0}, {0, 0, 0, 1, 1}})
+	answer := arr.NumIslands(arr.GetSlice())
 
-	result := s.Intersect(first.GetSlice(), second.GetSlice())
-	fmt.Println(result)
+	fmt.Println(answer)
 }
