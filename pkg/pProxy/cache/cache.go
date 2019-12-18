@@ -1,7 +1,7 @@
 package cache
 
 import (
-	df "github.com/solympe/Golang_Training/patternProxy/DBFunctions"
+	"github.com/solympe/Golang_Training/pkg/pProxy/DBFunctions"
 )
 
 type cache struct {
@@ -19,6 +19,6 @@ func (c *cache) SendData(data string) {
 }
 
 // NewCache returns new instance of cache
-func NewCache() df.DBFunctions {
+func NewCache() DBFunctions.DBFunctions {
 	return &cache{}
 }

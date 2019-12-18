@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	c "github.com/solympe/Golang_Training/patternProxy/cache"
-	db "github.com/solympe/Golang_Training/patternProxy/dataBase"
-	dbn "github.com/solympe/Golang_Training/patternProxy/dbNode"
+	c "github.com/solympe/Golang_Training/pkg/pProxy/cache"
+	db "github.com/solympe/Golang_Training/pkg/pProxy/dataBase"
+	dbn "github.com/solympe/Golang_Training/pkg/pProxy/dbNode"
 )
 
 func main() {
