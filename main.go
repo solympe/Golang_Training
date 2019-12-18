@@ -17,5 +17,4 @@ func main() {
 	fmt.Println("2: ", delivery.ChooseType("Mail"))
 	fmt.Println("3: ", mail.ChooseType("plAne"))
 	fmt.Println("4: ", mail.ChooseType("etc"))
-
 }
