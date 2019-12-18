@@ -7,7 +7,7 @@ import (
 	"github.com/solympe/Golang_Training/pkg/pObserver/subscription"
 )
 
-// newsPortal
+// newsPortal is a news portal structure
 type newsPortal struct {
 	subscribers map[subscription.Subscriber]string
 }
