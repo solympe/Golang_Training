@@ -1,6 +1,6 @@
 package tdArray
 
-import ic "github.com/solympe/Golang_Training/leetcode/numIslands/islandCounter"
+import "github.com/solympe/Golang_Training/pkg/numIslands/islandCounter"
 
 // tdArray is struct with input slice
 type tdArray struct {
@@ -42,6 +42,6 @@ func nullNear(grid [][]byte, i int, j int, lenJ int) {
 }
 
 // NewtdArray returns new copy of tdArray struct
-func NewtdArray(bytes [][]byte) ic.IslandCounter {
+func NewtdArray(bytes [][]byte) islandCounter.IslandCounter {
 	return &tdArray{slice: bytes}
 }

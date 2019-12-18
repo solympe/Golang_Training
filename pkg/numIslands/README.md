@@ -33,5 +33,5 @@ Memory Usage: 2.9 MB, less than 50.00% of Go online submissions for Number of Is
 
 ---
 <b>P.S.</b><br>
-Main location: ./main.go<br>
-Files location: ./leetcode/numIslands/*
+Main location: ./cmd/numIslands/main.go <br>
+Files location: ./pkg/numIslands/*
