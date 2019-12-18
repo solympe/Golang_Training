@@ -3,7 +3,7 @@ package subscribers
 import (
 	"fmt"
 
-	sn "github.com/solympe/Golang_Training/patterns/pObserver/subscription"
+	"github.com/solympe/Golang_Training/pkg/pObserver/subscription"
 )
 
 // subscribe represents subscriber interface
@@ -22,6 +22,6 @@ func (s *subscriber) GetNotify(message string) {
 }
 
 // NewSubscriber returns new copy of subscriber
-func NewSubscriber(name string) sn.Subscriber {
+func NewSubscriber(name string) subscription.Subscriber {
 	return &subscriber{name: name}
 }
