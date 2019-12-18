@@ -1,6 +1,6 @@
 package slice
 
-import ss "github.com/solympe/Golang_Training/leetcode/interselect/SliceSolver"
+import ss "github.com/solympe/Golang_Training/cmd/interselect/SliceSolver"
 
 type slice struct {
 	data []int

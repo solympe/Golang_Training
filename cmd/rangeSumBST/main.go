@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	bt "github.com/solympe/Golang_Training/leetcode/rangeSumBST/bTree"
-	rs "github.com/solympe/Golang_Training/leetcode/rangeSumBST/rangeSum"
+	bt "github.com/solympe/Golang_Training/pkg/rangeSumBST/bTree"
+	rs "github.com/solympe/Golang_Training/pkg/rangeSumBST/rangeSum"
 )
 
 func main() {
