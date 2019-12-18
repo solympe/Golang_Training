@@ -3,12 +3,12 @@ package DeliveryPlane
 import (
 	"strings"
 
-	pp "github.com/solympe/Golang_Training/patterns/patternChainOfResponsibility/delivery"
+	"github.com/solympe/Golang_Training/pkg/pChainOfResponsibility/delivery"
 )
 
 // DeliveryPlane is a plane handler struct
 type DeliveryPlane struct {
-	NextType pp.TypeOfDelivery
+	NextType patternChainOfResponsibility.TypeOfDelivery
 }
 
 // ChooseType checking type of delivery (if plane == true -> stop here)
@@ -22,6 +22,6 @@ func (d *DeliveryPlane) ChooseType(chosen string) string {
 }
 
 // NewDPlane is aconstructor for plane delivery
-func NewDPlane(del pp.TypeOfDelivery) pp.TypeOfDelivery {
+func NewDPlane(del patternChainOfResponsibility.TypeOfDelivery) patternChainOfResponsibility.TypeOfDelivery {
 	return &DeliveryPlane{NextType: del}
 }

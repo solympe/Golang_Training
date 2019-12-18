@@ -11,7 +11,3 @@ Each of structures has one similar <i>method</i> - ChooseType(chosen)<br>
 'ChooseType' checks entered word and returns result according to the condition
 
 You can test this pattern in main.go
-
-P.S.<br>
-main.go location: ./main.go<br>
-packet location: .patterns/patternChainOfResponsibility/* 

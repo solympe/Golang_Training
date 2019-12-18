@@ -3,12 +3,12 @@ package DeliveryCourier
 import (
 	"strings"
 
-	p "github.com/solympe/Golang_Training/patterns/patternChainOfResponsibility/delivery"
+	"github.com/solympe/Golang_Training/pkg/pChainOfResponsibility/delivery"
 )
 
 // DeliveryCourier is a courier handler struct
 type DeliveryCourier struct {
-	NextType p.TypeOfDelivery
+	NextType patternChainOfResponsibility.TypeOfDelivery
 }
 
 // ChooseType checking type of delivery (if courier == true -> stop here)
@@ -22,6 +22,6 @@ func (d *DeliveryCourier) ChooseType(chosen string) string {
 }
 
 // NewDCourier is a constructor for courier delivery
-func NewDCourier(del p.TypeOfDelivery) p.TypeOfDelivery {
+func NewDCourier(del patternChainOfResponsibility.TypeOfDelivery) patternChainOfResponsibility.TypeOfDelivery {
 	return &DeliveryCourier{NextType: del}
 }

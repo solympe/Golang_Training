@@ -3,12 +3,12 @@ package DeliveryMail
 import (
 	"strings"
 
-	p "github.com/solympe/Golang_Training/patterns/patternChainOfResponsibility/delivery"
+	"github.com/solympe/Golang_Training/pkg/pChainOfResponsibility/delivery"
 )
 
 // DeliveryMail is a handler struct
 type DeliveryMail struct {
-	NextType p.TypeOfDelivery
+	NextType patternChainOfResponsibility.TypeOfDelivery
 }
 
 // ChooseType checking type of delivery (if mail == true -> stop here)
@@ -22,6 +22,6 @@ func (d *DeliveryMail) ChooseType(chosen string) string {
 }
 
 // NewDMail is a constructor for mail delivery
-func NewDMail(del p.TypeOfDelivery) p.TypeOfDelivery {
+func NewDMail(del patternChainOfResponsibility.TypeOfDelivery) patternChainOfResponsibility.TypeOfDelivery {
 	return &DeliveryMail{NextType: del}
 }
