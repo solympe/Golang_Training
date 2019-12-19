@@ -1,8 +1,8 @@
-package companyB
+package company
 
 import (
-	cR "github.com/solympe/Golang_Training/pkg/pVisitor/companyRegulator"
-	iI "github.com/solympe/Golang_Training/pkg/pVisitor/inspectorInterface"
+	cR "github.com/solympe/Golang_Training/pkg/pattern-visitor/company-regulator"
+	iI "github.com/solympe/Golang_Training/pkg/pattern-visitor/inspector-interface"
 )
 
 type companyB struct {

@@ -1,7 +1,7 @@
-package companyRegulator
+package company_regulator
 
 import (
-	iI "github.com/solympe/Golang_Training/pkg/pVisitor/inspectorInterface"
+	iI "github.com/solympe/Golang_Training/pkg/pattern-visitor/inspector-interface"
 )
 
 // CompanyRegulator represents companies interface

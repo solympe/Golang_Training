@@ -1,8 +1,8 @@
-package companyOwner
+package cooperative
 
 import (
-	cC "github.com/solympe/Golang_Training/pkg/pVisitor/companyRegulator"
-	iI "github.com/solympe/Golang_Training/pkg/pVisitor/inspectorInterface"
+	cC "github.com/solympe/Golang_Training/pkg/pattern-visitor/company-regulator"
+	iI "github.com/solympe/Golang_Training/pkg/pattern-visitor/inspector-interface"
 )
 
 type Corporation interface {
