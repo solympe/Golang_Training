@@ -5,7 +5,7 @@ type List interface {
 	ReverseList(head *listNode) *listNode
 }
 
-// listNode represents list struct
+// list-node represents list struct
 type listNode struct {
 	Val  int
 	Next *listNode
