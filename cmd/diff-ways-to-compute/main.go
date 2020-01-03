@@ -3,11 +3,10 @@ package main
 import (
 	"fmt"
 	"strconv"
-	"strings"
 )
 
 func main() {
-	stringIn := "11+1"
+	stringIn := "0"
 	res := diffWaysToCompute(stringIn)
 
 	fmt.Println("ANSWER: ", res)
@@ -42,36 +41,43 @@ func RecurCount(numbers []string, operator []string, iStart int, iEnd int) []int
 				for _, right := range rightSide {
 					result = append(result, Calculate(left, operator[iNow], right))
 				}
-
 			}
 		}
-
 	}
-
 	return result
 }
 
+func splitInput(input string)(output []string) {
+	tmp := ""
+
+	for i := range input {
+		if input[i] != '+' && input[i] != '-' && input[i] != '*' {
+			tmp += string(input[i])
+		} else {
+			output = append(output, tmp)
+			tmp = ""
+			output = append(output, string(input[i]))
+		}
+		if i+1 == len(input) {
+			output = append(output, tmp)
+		}
+	}
+	return output
+}
+
 func diffWaysToCompute(input string) []int {
-	slice := strings.Split(input, "")
-	alert := false
-
-
-
-
+	slice := splitInput(input)
 	numbers := []string{}
 	operators := []string{}
 
-	for i := range input {
-		if slice[i] == "+" || slice[i] == "-" || slice[i] == "*" {
-			operators = append(operators, slice[i])
-			alert = false
+	for _, i := range slice {
+		if i == "+" || i == "-" || i == "*" {
+			operators = append(operators, i)
 		} else {
-			numbers = append(numbers, slice[i])
+			numbers = append(numbers, i)
 		}
 	}
-	if len(numbers) == 0 || len(operators) == 0 {
-		return []int{}
-	} else if len(operators) == 0 && len(numbers) == 1 {
+	if len(operators) == 0 && len(numbers) == 1 {
 		num, _ := strconv.Atoi(numbers[0])
 		answer := []int{num}
 		return answer
