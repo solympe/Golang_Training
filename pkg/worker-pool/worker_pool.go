@@ -1,4 +1,4 @@
-package main
+package worker_pool
 
 import (
 	"fmt"
@@ -8,36 +8,41 @@ import (
 	"time"
 )
 
-type prorab struct {
+// Foreman represents foreman interface
+type WorkStarter interface {
+	StartWork(countOfWorkers int)
+}
+
+type foreman struct {
 	channel chan string
 }
 
-func (p *prorab) checkWork(i int, wg *sync.WaitGroup) {
-		fmt.Println("I am worker " + strconv.Itoa(i) + " and i start my job")
-		rand.Seed(time.Now().UnixNano())
-		n := rand.Intn(3)
-		time.Sleep(time.Duration(n) * time.Second)
-		p.channel <- "I am worker " + strconv.Itoa(i) + " and i finished my job in " + strconv.Itoa(n) + " seconds"
-		wg.Done()
-}
-
-func main() {
+// StartWork starts goroutines work
+func (f *foreman) StartWork(countOfWorkers int) {
 	var wg sync.WaitGroup
-	countOfWorkers := 3
-	chanOfMaster := make(chan string,countOfWorkers)
-
-	master := prorab{channel:chanOfMaster}
 
 	for i := 1; i <= countOfWorkers; i++ {
 		wg.Add(1)
-		go master.checkWork(i, &wg)
+		go f.checkWork(i, &wg)
 	}
-	wg.Wait()
 
 	for i := 1; i <= countOfWorkers; i++ {
-		i := <- chanOfMaster
+		i := <-f.channel
 		fmt.Println(i)
 	}
+	wg.Wait()
+}
 
-	defer close(chanOfMaster)
+func (f *foreman) checkWork(i int, wg *sync.WaitGroup) {
+	fmt.Println("I am worker " + strconv.Itoa(i) + " and i start my job")
+	rand.Seed(time.Now().UnixNano())
+	n := rand.Intn(3) + 1
+	time.Sleep(time.Duration(n) * time.Second)
+	f.channel <- "I am worker " + strconv.Itoa(i) + " and i finished my job in " + strconv.Itoa(n) + " seconds"
+	wg.Done()
+}
+
+// NewForeman returns new copy of foreman
+func NewForeman(channelIn chan string) WorkStarter {
+	return &foreman{channel: channelIn}
 }
