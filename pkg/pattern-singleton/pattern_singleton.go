@@ -1,34 +1,37 @@
-package main
+package singleton
 
-import (
-	"fmt"
-	"sync"
+import "sync"
+
+var (
+	once      sync.Once
+	singleMan *singleton
 )
 
-type President struct {
+// SyngletonMaker ...
+type SingleMaker interface {
+	SetName(name string)
+	SetSurname(name string)
+}
+
+type singleton struct {
 	name    string
 	surname string
 }
 
-var (
-	once      sync.Once
-	president *President
-)
-
-func GetPresident() *President {
-	once.Do(func() {
-		president = &President{}
-	})
-	return president
+// SetName ...
+func (s *singleton) SetName(name string) {
+	s.name = name
 }
 
-func main() {
+// SetSurname ...
+func (s *singleton) SetSurname(sname string) {
+	s.surname = sname
+}
 
-	somethingMan1 := GetPresident()
-	somethingMan1.name = "Alexandr"
-	somethingMan1.surname = "Ivanov"
-
-	somethingMan2 := GetPresident()
-
-	fmt.Println(somethingMan1.name, somethingMan1,"=",somethingMan2.name, somethingMan2, "is", somethingMan1 == somethingMan2)
+// Singleton ...
+func Singleton() *singleton {
+	once.Do(func() {
+		singleMan = &singleton{}
+	})
+	return singleMan
 }
