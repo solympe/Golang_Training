@@ -1,13 +1,11 @@
-package newsPortal
+package news
 
 import (
 	"fmt"
 
-	"github.com/solympe/Golang_Training/pkg/pObserver/news"
 	"github.com/solympe/Golang_Training/pkg/pObserver/subscription"
 )
 
-// newsPortal is a news portal structure
 type newsPortal struct {
 	subscribers map[subscription.Subscriber]string
 }
@@ -40,6 +38,6 @@ func (n *newsPortal) Notify(message string) {
 }
 
 // NewPortal - returns copy of news portal
-func NewPortal() news.News {
+func NewPortal() News {
 	return &newsPortal{map[subscription.Subscriber]string{}}
 }

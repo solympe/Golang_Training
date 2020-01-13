@@ -1,13 +1,13 @@
 package main
 
 import (
-	np "github.com/solympe/Golang_Training/pkg/pObserver/newsPortal"
-	s "github.com/solympe/Golang_Training/pkg/pObserver/subscribers"
+	n "github.com/solympe/Golang_Training/pkg/pObserver/news"
+	s "github.com/solympe/Golang_Training/pkg/pObserver/subscription"
 )
 
 func main() {
 
-	newsPortal := np.NewPortal()
+	newsPortal := n.NewPortal()
 	subscriber := s.NewSubscriber("John")
 	subscriber2 := s.NewSubscriber("Jake")
 
