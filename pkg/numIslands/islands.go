@@ -1,6 +1,6 @@
 package islands
 
-// tdArray is struct with input slice
+// islands is struct with input slice
 type islands struct {
 	slice [][]byte
 }
@@ -38,7 +38,7 @@ func nullNear(grid [][]byte, i int, j int, lenJ int) {
 	nullNear(grid, i, j-1, lenJ)
 }
 
-// NewtdArray returns new copy of tdArray struct
-func NewtdArray(bytes [][]byte) IslandCounter {
+// NewIslandCounter returns new copy of islands interface
+func NewIslandCounter(bytes [][]byte) IslandCounter {
 	return &islands{slice: bytes}
 }
