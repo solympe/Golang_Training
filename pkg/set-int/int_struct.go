@@ -1,12 +1,5 @@
 package set_int
 
-// IntManager ...
-type IntManager interface {
-	AddElem(num int) bool
-	DeleteElem(num int) bool
-	CheckElem(num int) bool
-}
-
 type intStruct struct {
 	elements map[int]bool
 }
@@ -37,7 +30,7 @@ func (s *intStruct) CheckElem(num int) bool {
 	return true
 }
 
-// NewIntStruct ...
-func NewIntStruct(elements map[int]bool) IntManager {
+// NewIntStructExecutor ...
+func NewIntStructExecutor(elements map[int]bool) IntStructExecutor {
 	return &intStruct{elements: elements}
 }

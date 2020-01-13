@@ -24,7 +24,7 @@ var tests = []testingS{
 }
 
 func TestSetInt(t *testing.T) {
-	sInt := si.NewIntStruct(make(map[int]bool))
+	sInt := si.NewIntStructExecutor(make(map[int]bool))
 
 	for _, pairs := range tests {
 		var result bool
