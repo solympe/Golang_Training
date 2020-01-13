@@ -7,7 +7,7 @@ import (
 
 func main() {
 
-	newsPortal := n.NewPortal()
+	newsPortal := n.NewNews()
 	subscriber := s.NewSubscriber("John")
 	subscriber2 := s.NewSubscriber("Jake")
 
