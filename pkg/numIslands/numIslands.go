@@ -1,12 +1,12 @@
 package islands
 
 // tdArray is struct with input slice
-type tdArray struct {
+type islands struct {
 	slice [][]byte
 }
 
 // NumIslands is a function that counts the number of islands in a slice
-func (t *tdArray) NumIslands(grid [][]byte) int {
+func (t *islands) NumIslands(grid [][]byte) int {
 	result := 0
 
 	for i := range grid {
@@ -22,7 +22,7 @@ func (t *tdArray) NumIslands(grid [][]byte) int {
 }
 
 // GetSlice function returns slice
-func (t *tdArray) GetSlice() [][]byte {
+func (t *islands) GetSlice() [][]byte {
 	return t.slice
 }
 
@@ -40,5 +40,5 @@ func nullNear(grid [][]byte, i int, j int, lenJ int) {
 
 // NewtdArray returns new copy of tdArray struct
 func NewtdArray(bytes [][]byte) IslandCounter {
-	return &tdArray{slice: bytes}
+	return &islands{slice: bytes}
 }
