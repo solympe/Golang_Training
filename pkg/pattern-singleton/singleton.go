@@ -4,14 +4,8 @@ import "sync"
 
 var (
 	once      sync.Once
-	singleMan *singleton
+	singleMan Singletoner
 )
-
-// SyngletonMaker ...
-type SingleMaker interface {
-	SetName(name string)
-	SetSurname(name string)
-}
 
 type singleton struct {
 	name    string
@@ -29,9 +23,14 @@ func (s *singleton) SetSurname(sname string) {
 }
 
 // Singleton ...
-func Singleton() *singleton {
+func Singleton() Singletoner {
 	once.Do(func() {
-		singleMan = &singleton{}
+		singleMan = NewSingletoner()
 	})
 	return singleMan
+}
+
+// NewSingletoner ...
+func NewSingletoner() Singletoner {
+	return &singleton{}
 }

@@ -7,7 +7,6 @@ import (
 )
 
 func main() {
-
 	man1 := s.Singleton()
 	man1.SetName("Vladimir")
 	man1.SetSurname("Ivanov")
