@@ -1,28 +1,27 @@
-package main
+package is_isomorphic
 
 import (
-	"fmt"
-	"strings"
 	"reflect"
+	"strings"
 )
 
-func main() {
-
-	s := "aada"
-	t := "daad"
-
-	answer := isIsomorphic(s, t)
-
-	fmt.Println("ans: ",answer)
+type word struct {
+	data string
 }
 
-func isIsomorphic(s string, t string) bool {
+// GetData ...
+func (w *word) GetData() string {
+	return w.data
+}
+
+// IsIsomorphic ...
+func IsIsomorphic(s string, t string) bool {
 	m1 := createMap(s)
 	m2 := createMap(t)
 	return reflect.DeepEqual(m1, m2)
 }
 
-func createMap (s string) []int{
+func createMap(s string) []int {
 	m := map[string]int{}
 	one := strings.Split(s, "")
 	intSlice := []int{}
@@ -37,4 +36,9 @@ func createMap (s string) []int{
 		}
 	}
 	return intSlice
+}
+
+// NewWorder ...
+func NewWorder(data string) Worder {
+	return &word{data: data}
 }
