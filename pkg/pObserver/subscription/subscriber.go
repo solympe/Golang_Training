@@ -17,6 +17,6 @@ func (s *subscriber) GetNotify(message string) {
 }
 
 // NewSubscriber returns new copy of subscriber
-func NewSubscriber(name string) Subscriber {
+func NewSubscriber(name string) SubscriberManipulator {
 	return &subscriber{name: name}
 }

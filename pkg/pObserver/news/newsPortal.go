@@ -7,17 +7,17 @@ import (
 )
 
 type newsPortal struct {
-	subscribers map[subscription.Subscriber]string
+	subscribers map[subscription.SubscriberManipulator]string
 }
 
 // AddSubscriber writes new subscriber to map
-func (n *newsPortal) AddSubscriber(subscriber subscription.Subscriber) {
+func (n *newsPortal) AddSubscriber(subscriber subscription.SubscriberManipulator) {
 	name := subscriber.GetName()
 	n.subscribers[subscriber] = name
 }
 
 // DeleteSubscriber deletes subscriber from map
-func (n *newsPortal) DeleteSubscriber(subscriber subscription.Subscriber) {
+func (n *newsPortal) DeleteSubscriber(subscriber subscription.SubscriberManipulator) {
 	delete(n.subscribers, subscriber)
 }
 
@@ -33,11 +33,11 @@ func (n *newsPortal) ShowSubscribers() {
 // Notify - sends a message to all subscribers
 func (n *newsPortal) Notify(message string) {
 	for key, _ := range n.subscribers {
-		subscription.Subscriber.GetNotify(key, message)
+		subscription.SubscriberManipulator.GetNotify(key, message)
 	}
 }
 
 // NewPortal - returns copy of news portal
 func NewPortal() News {
-	return &newsPortal{map[subscription.Subscriber]string{}}
+	return &newsPortal{map[subscription.SubscriberManipulator]string{}}
 }
