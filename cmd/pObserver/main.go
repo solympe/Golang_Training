@@ -6,10 +6,9 @@ import (
 )
 
 func main() {
-
-	newsPortal := n.NewNews()
-	subscriber := s.NewSubscriber("John")
-	subscriber2 := s.NewSubscriber("Jake")
+	newsPortal := n.NewNewsManipulator()
+	subscriber := s.NewSubscriberManipulator("John")
+	subscriber2 := s.NewSubscriberManipulator("Jake")
 
 	newsPortal.AddSubscriber(subscriber)
 	newsPortal.AddSubscriber(subscriber2)

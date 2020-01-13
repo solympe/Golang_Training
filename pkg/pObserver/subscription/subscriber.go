@@ -16,7 +16,7 @@ func (s *subscriber) GetNotify(message string) {
 	fmt.Println("I am " + s.name + " and i received " + message)
 }
 
-// NewSubscriber returns new copy of subscriber
-func NewSubscriber(name string) SubscriberManipulator {
+// NewSubscriberManipulator returns new copy of subscriber
+func NewSubscriberManipulator(name string) SubscriberManipulator {
 	return &subscriber{name: name}
 }
