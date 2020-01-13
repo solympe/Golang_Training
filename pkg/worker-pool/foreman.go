@@ -8,11 +8,6 @@ import (
 	"time"
 )
 
-// Foreman represents foreman interface
-type WorkStarter interface {
-	StartWork(countOfWorkers int)
-}
-
 type foreman struct {
 	channel chan string
 }
@@ -42,7 +37,7 @@ func (f *foreman) checkWork(i int, wg *sync.WaitGroup) {
 	wg.Done()
 }
 
-// NewForeman returns new copy of foreman
-func NewForeman(channelIn chan string) WorkStarter {
+// NewForemaner returns new copy of foreman
+func NewForemaner(channelIn chan string) Foremaner {
 	return &foreman{channel: channelIn}
 }
