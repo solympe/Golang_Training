@@ -1,6 +1,10 @@
-package main
+package pattern_factory
 
-import "testing"
+import (
+	"testing"
+
+	f "github.com/solympe/Golang_Training/pkg/pattern-factory"
+)
 
 type testCase struct {
 	input    string
@@ -16,7 +20,8 @@ var tests = []testCase{
 
 func TestAndroidFactory(t *testing.T) {
 	for _, pairs := range tests {
-		newElement := AndroidFactory(pairs.input)
+		f.
+		newElement := main.AndroidFactory(pairs.input)
 		newElement.giveName(pairs.nameIn)
 		typeofElem := newElement.getType()
 		nameofElem := newElement.getName()
