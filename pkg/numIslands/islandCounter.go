@@ -1,4 +1,4 @@
-package islandCounter
+package islands
 
 // IslandCounter represents two-dimension array interface
 type IslandCounter interface {
