@@ -7,7 +7,6 @@ import (
 
 type word struct {
 	data    string
-	mapData []int
 }
 
 // GetData ...
