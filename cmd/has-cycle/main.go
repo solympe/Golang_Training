@@ -11,5 +11,5 @@ func main() {
 	node2 := hc.NewListNodeSolver(10, nil)
 	node1 = hc.NewListNodeSolver(11, node2)
 
-	fmt.Println(hc.HasCycle(node1))
+	fmt.Println(node1.HasCycle(node1))
 }

@@ -16,7 +16,7 @@ func (l *listNode) GetVal() int {
 }
 
 // HasCycle ...
-func HasCycle(head ListNodeSolver) bool {
+func (l *listNode) HasCycle(head ListNodeSolver) bool {
 	m := map[ListNodeSolver]int{}
 	for head != nil && head.GetNext() != nil {
 		_, ok := m[head.GetNext()]
