@@ -21,5 +21,5 @@ Output: [4,9]
 
 ---
 <b>My result:</b><br>
-<a href="https://leetcode.com/submissions/detail/286617072/">LINK</a>
+<a href="https://leetcode.com/submissions/detail/286617072/">SUBMISSION LINK</a>
 
