@@ -1,6 +1,6 @@
-package history_service
+package history
 
-// HistoryService represents history interface
+// HistoryService ...
 type HistoryService interface {
 	ExtractColor() string
 	SaveColor(color string)

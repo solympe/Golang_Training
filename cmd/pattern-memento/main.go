@@ -8,15 +8,23 @@ import (
 )
 
 func main() {
-	pallete := p.NewPalette()
-	history := h.NewHistory()
+	pallete := p.NewPaletteChanger()
+	history := h.NewHistoryService()
 	pallete.SetHistory(history)
 
 	pallete.SetColor("red")
 	pallete.SetColor("green")
+	pallete.SetColor("yellow")
 
-	fmt.Println(pallete.GetColor())
 	pallete.SetPreviousColor()
 	fmt.Println(pallete.GetColor())
 
+	pallete.SetPreviousColor()
+	fmt.Println(pallete.GetColor())
+
+	pallete.SetPreviousColor()
+	fmt.Println(pallete.GetColor())
+
+	pallete.SetPreviousColor()
+	fmt.Println(pallete.GetColor())
 }

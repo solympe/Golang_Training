@@ -1,14 +1,11 @@
 package palette
 
-import (
-	"github.com/solympe/Golang_Training/pkg/pattern-memento/history-service"
-	"github.com/solympe/Golang_Training/pkg/pattern-memento/pallete-changer"
-)
+import h "github.com/solympe/Golang_Training/pkg/pattern-memento/history"
 
 // represents palette struct
 type palette struct {
 	color   string
-	history history_service.HistoryService
+	history h.HistoryService
 }
 
 // SetColor set new color into palette
@@ -25,15 +22,14 @@ func (p *palette) GetColor() (color string) {
 // SetPreviousColor returns previous color from palette
 func (p *palette) SetPreviousColor() {
 	p.color = p.history.ExtractColor()
-
 }
 
 // SetHistory sets palettes history
-func (p *palette) SetHistory(historyIn history_service.HistoryService) {
+func (p *palette) SetHistory(historyIn h.HistoryService) {
 	p.history = historyIn
 }
 
-// NewPalette returns new copy of palette
-func NewPalette() pallete_changer.PaletteChanger {
+// NewPaletteChanger returns new copy of palette
+func NewPaletteChanger() PaletteChanger {
 	return &palette{}
 }
