@@ -29,7 +29,7 @@ func (h *planeB) DelayFlight(delay int) {
 	h.mediator.Notify("delay planeB", delay)
 }
 
-// AddDelay add common delay time to plane_b
+// AddDelay add common delay time to planeB
 func (h *planeB) AddDelay(delay int) {
 	h.departureDelay += delay
 }
@@ -39,7 +39,7 @@ func (h *planeB) PrintDelay() {
 	fmt.Println("Plane B delay: " + strconv.Itoa(h.departureDelay) + " hours")
 }
 
-// NewPlaneManagerB returns copy of new plane_b
+// NewPlaneManagerB returns copy of new planeB
 func NewPlaneManagerB() planeManagerB {
 	return &planeB{}
 }
