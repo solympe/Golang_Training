@@ -16,5 +16,4 @@ Explanation: 342 + 465 = 807.
 
 
 P.S.<br>
-Main location: ./cmd/add-two-numbers/main.go<br>
-File location: ./pkg/add-two-numbers/*
+<a href="https://leetcode.com/submissions/detail/287097652/">LINK</a>
