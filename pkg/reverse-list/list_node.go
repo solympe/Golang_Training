@@ -5,7 +5,7 @@ type listNode struct {
 	next ListNodeReverser
 }
 
-// ReverseList return
+// ReverseList return reversed list
 func (l *listNode) ReverseList(head ListNodeReverser) ListNodeReverser {
 	if head == nil || head.getNext() == nil {
 		return head
@@ -24,7 +24,7 @@ func (l *listNode) getNext() ListNodeReverser {
 	return l.next
 }
 
-// NewNode returns new element of list
+// NewListNodeReverser returns new element of list
 func NewListNodeReverser(val int, next ListNodeReverser) ListNodeReverser {
 	return &listNode{val, next}
 }
