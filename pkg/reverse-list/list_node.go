@@ -1,8 +1,8 @@
 package reverse_list
 
 type listNode struct {
-	Val  int
-	Next ListNodeReverser
+	val  int
+	next ListNodeReverser
 }
 
 // ReverseList return
@@ -17,11 +17,11 @@ func (l *listNode) ReverseList(head ListNodeReverser) ListNodeReverser {
 }
 
 func (l *listNode) setNext(next ListNodeReverser) {
-	l.Next = next
+	l.next = next
 }
 
 func (l *listNode) getNext() ListNodeReverser {
-	return l.Next
+	return l.next
 }
 
 // NewNode returns new element of list
