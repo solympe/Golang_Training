@@ -6,7 +6,7 @@ import (
 )
 
 type word struct {
-	data    string
+	data string
 }
 
 // GetData ...
