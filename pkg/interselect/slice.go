@@ -24,7 +24,7 @@ func Intersect(nums1 []int, nums2 []int) []int {
 	return result
 }
 
-// NewSlicer returns new copy of Slicer interface
+// NewSlicer returns new copy of Slicer
 func NewSlicer(sliceIn []int) Slicer {
 	return &slice{data: sliceIn}
 }
