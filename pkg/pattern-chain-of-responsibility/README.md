@@ -5,7 +5,7 @@ DeliveryCourier - 1st handler<br>
 DeliveryMail - 2nd handler<br>
 DeliveryPlane - 3nd handler
 
-All this structures are connected by one 'TypeOfDelivery' interface
+All this structures are connected by one 'DeliveryManipulator' interface
 
 Each of structures has one similar <i>method</i> - ChooseType(chosen)<br>
 'ChooseType' checks entered word and returns result according to the condition
