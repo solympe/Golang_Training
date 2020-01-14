@@ -1,0 +1,3 @@
+<b>Pattern factory</b>
+
+...

@@ -1,34 +1,29 @@
-package pattern_factory
+package pattern_factor_test
 
 import (
 	"testing"
 
-	f "github.com/solympe/Golang_Training/pkg/pattern-factory"
+	f "github.com/solympe/Golang_Training/pkg/pattern-factory/factory"
 )
 
 type testCase struct {
 	input    string
-	nameIn   string
-	waitName string
 	waitType string
 }
 
 var tests = []testCase{
-	{"evil", "Bob", "Bob", "evil"},
-	{"kind", "Terminator", "Terminator", "kind"},
+	{"evil", "evil"},
+	{"kind", "kind"},
 }
 
 func TestAndroidFactory(t *testing.T) {
 	for _, pairs := range tests {
-		f.
-		newElement := main.AndroidFactory(pairs.input)
-		newElement.giveName(pairs.nameIn)
-		typeofElem := newElement.getType()
-		nameofElem := newElement.getName()
-		if typeofElem == pairs.waitType && nameofElem == pairs.waitName {
-			t.Log("Test passed! Waited:", pairs.waitName, pairs.waitType, ", Gave:", nameofElem, typeofElem)
+		factory := f.NewFactoryCreator()
+		typeofElem := factory.CreateAndroid(pairs.input).GetType()
+		if typeofElem == pairs.waitType {
+			t.Log("Test passed! Waited:", pairs.waitType, ", Gave:", typeofElem)
 		} else {
-			t.Error("Test failed! Waited:", pairs.waitName, pairs.waitType, ", Gave:", nameofElem, typeofElem)
+			t.Error("Test failed! Waited:", pairs.waitType, ", Gave:", typeofElem)
 		}
 	}
 }
