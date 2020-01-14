@@ -3,20 +3,19 @@ package main
 import (
 	"fmt"
 
-	addn "github.com/solympe/Golang_Training/pkg/add-two-numbers/add-numbers"
-	ln "github.com/solympe/Golang_Training/pkg/add-two-numbers/list-node"
+	"github.com/solympe/Golang_Training/pkg/add-two-numbers"
 )
 
 func main() {
-	list6 := ln.NewListNodeExecutor(5, nil)
-	list5 := ln.NewListNodeExecutor(5, list6)
-	list4 := ln.NewListNodeExecutor(5, list5)
+	list6 := add_two_numbers.NewListNodeExecutor(5, nil)
+	list5 := add_two_numbers.NewListNodeExecutor(5, list6)
+	list4 := add_two_numbers.NewListNodeExecutor(5, list5)
 
-	list3 := ln.NewListNodeExecutor(5, nil)
-	list2 := ln.NewListNodeExecutor(5, list3)
-	list1 := ln.NewListNodeExecutor(5, list2)
+	list3 := add_two_numbers.NewListNodeExecutor(5, nil)
+	list2 := add_two_numbers.NewListNodeExecutor(5, list3)
+	list1 := add_two_numbers.NewListNodeExecutor(5, list2)
 
-	res := addn.AddTwoNumbers(list1, list4)
+	res := list1.AddTwoNumbers(list1, list4)
 	for {
 		fmt.Println(res.GetVal())
 		if res.GetNext() != nil {
