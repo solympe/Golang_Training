@@ -1,6 +1,6 @@
 package subscription
 
-// SubscriberManipulator represents subscribers interface
+// SubscriberManipulator ...
 type SubscriberManipulator interface {
 	GetName() string
 	GetNotify(message string)

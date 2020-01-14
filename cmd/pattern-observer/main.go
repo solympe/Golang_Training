@@ -1,8 +1,8 @@
 package main
 
 import (
-	n "github.com/solympe/Golang_Training/pkg/pObserver/news"
-	s "github.com/solympe/Golang_Training/pkg/pObserver/subscription"
+	n "github.com/solympe/Golang_Training/pkg/pattern-observer/news"
+	s "github.com/solympe/Golang_Training/pkg/pattern-observer/subscription"
 )
 
 func main() {

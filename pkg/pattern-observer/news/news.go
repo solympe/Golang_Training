@@ -3,7 +3,7 @@ package news
 import (
 	"fmt"
 
-	"github.com/solympe/Golang_Training/pkg/pObserver/subscription"
+	"github.com/solympe/Golang_Training/pkg/pattern-observer/subscription"
 )
 
 type news struct {
