@@ -1,6 +1,5 @@
 package islands
 
-// islands is struct with input slice
 type islands struct {
 	slice [][]byte
 }
@@ -13,7 +12,7 @@ func (t *islands) NumIslands(grid [][]byte) int {
 		for j := range grid[i] {
 			if grid[i][j] == 1 {
 				lenJ := len(grid[i])
-				nullNear(grid, i, j, lenJ)
+				t.nullNear(grid, i, j, lenJ)
 				result++
 			}
 		}
@@ -27,18 +26,18 @@ func (t *islands) GetSlice() [][]byte {
 }
 
 // nullNumber is a recursive function that resets cells to 0
-func nullNear(grid [][]byte, i int, j int, lenJ int) {
+func (t *islands) nullNear(grid [][]byte, i int, j int, lenJ int) {
 	if i < 0 || j < 0 || i >= len(grid) || j >= lenJ || grid[i][j] == 0 {
 		return
 	}
 	grid[i][j] = 0
-	nullNear(grid, i+1, j, lenJ)
-	nullNear(grid, i, j+1, lenJ)
-	nullNear(grid, i-1, j, lenJ)
-	nullNear(grid, i, j-1, lenJ)
+	t.nullNear(grid, i+1, j, lenJ)
+	t.nullNear(grid, i, j+1, lenJ)
+	t.nullNear(grid, i-1, j, lenJ)
+	t.nullNear(grid, i, j-1, lenJ)
 }
 
-// NewIslandCounter returns new copy of islands interface
-func NewIslandCounter(bytes [][]byte) IslandCounter {
+// NewIslandsCounter returns new copy of islands interface
+func NewIslandsCounter(bytes [][]byte) IslandsCounter {
 	return &islands{slice: bytes}
 }
