@@ -25,7 +25,7 @@ func (t *islands) GetSlice() [][]byte {
 	return t.slice
 }
 
-// nullNumber is a recursive function that resets cells to 0
+// nullNear is a recursive function that resets cells to 0
 func (t *islands) nullNear(grid [][]byte, i int, j int, lenJ int) {
 	if i < 0 || j < 0 || i >= len(grid) || j >= lenJ || grid[i][j] == 0 {
 		return
