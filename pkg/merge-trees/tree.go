@@ -34,7 +34,7 @@ func (t *tree) setVal(val int) {
 }
 
 // MergeTrees ...
-func MergeTrees(t1 TreeMerger, t2 TreeMerger) TreeMerger {
+func (t *tree) MergeTrees(t1 TreeMerger, t2 TreeMerger) TreeMerger {
 	if t1 == nil && t2 == nil {
 		return nil
 	}
@@ -46,8 +46,8 @@ func MergeTrees(t1 TreeMerger, t2 TreeMerger) TreeMerger {
 		return t1
 	}
 	t1.setVal(t2.GetVal() + t1.GetVal())
-	t1.setLeft(MergeTrees(t1.GetLeft(), t2.GetLeft()))
-	t1.setRight(MergeTrees(t1.GetRight(), t2.GetRight()))
+	t1.setLeft(t1.MergeTrees(t1.GetLeft(), t2.GetLeft()))
+	t1.setRight(t1.MergeTrees(t1.GetRight(), t2.GetRight()))
 
 	return t1
 }

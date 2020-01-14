@@ -17,5 +17,5 @@ func main() {
 	b0 := mt.NewTreeMerger(2, bl, br)
 	t0 := mt.NewTreeMerger(4, nil, tr)
 
-	fmt.Println(mt.MergeTrees(t0, b0).GetVal(), "is a value of head")
+	fmt.Println(t0.MergeTrees(t0, b0).GetVal(), "is a value of head")
 }
