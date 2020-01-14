@@ -7,8 +7,8 @@ import (
 )
 
 func main() {
-	word1 := isom.NewWorder("cat")
-	word2 := isom.NewWorder("dog")
+	word1 := isom.NewWorder("pam")
+	word2 := isom.NewWorder("pum")
 
-	fmt.Println("Answer: ", isom.IsIsomorphic(word1.GetData(), word2.GetData()))
+	fmt.Println("Answer: ", word1.IsIsomorphic(word2))
 }

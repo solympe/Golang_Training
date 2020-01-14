@@ -6,7 +6,8 @@ import (
 )
 
 type word struct {
-	data string
+	data    string
+	mapData []int
 }
 
 // GetData ...
@@ -15,15 +16,15 @@ func (w *word) GetData() string {
 }
 
 // IsIsomorphic ...
-func IsIsomorphic(s string, t string) bool {
-	m1 := createMap(s)
-	m2 := createMap(t)
+func (w *word) IsIsomorphic(word2 Worder) bool {
+	m1 := w.createMap()
+	m2 := word2.createMap()
 	return reflect.DeepEqual(m1, m2)
 }
 
-func createMap(s string) []int {
+func (w *word) createMap() []int {
 	m := map[string]int{}
-	one := strings.Split(s, "")
+	one := strings.Split(w.data, "")
 	intSlice := []int{}
 	for i := 0; i < len(one); i++ {
 		if m[one[i]] == 0 {
