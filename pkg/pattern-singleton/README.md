@@ -1,0 +1,1 @@
+<b>Pattern Singleton</b>
