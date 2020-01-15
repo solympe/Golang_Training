@@ -8,11 +8,10 @@ import (
 
 func main() {
 	plane := delivery.NewPlane(nil)
-	deliveryA := delivery.NewCourier(plane)
-	mail := delivery.NewMail(deliveryA)
+	courier := delivery.NewCourier(plane)
+	mail := delivery.NewMail(courier)
 
-	fmt.Println(mail.ChooseType("courier"))
-	fmt.Println(mail.ChooseType("plAne"))
+	result := mail.ChooseDelivery("plane")
 
-	fmt.Println(mail.ChooseType("etc"))
+	fmt.Println(result)
 }

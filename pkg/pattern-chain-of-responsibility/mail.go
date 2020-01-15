@@ -6,12 +6,12 @@ type mail struct {
 	nextType Delivery
 }
 
-// ChooseType checking type of delivery (if mail == true -> stop here)
-func (d *mail) ChooseType(chosen string) string {
+// ChooseDelivery checking type of delivery (if mail == true -> stop here)
+func (d *mail) ChooseDelivery(chosen string) string {
 	if strings.ToLower(chosen) == "mail" {
 		return "client choosed mail delivery"
 	} else if d.nextType != nil {
-		return d.nextType.ChooseType(chosen)
+		return d.nextType.ChooseDelivery(chosen)
 	}
 	return "Delivery type error"
 }
