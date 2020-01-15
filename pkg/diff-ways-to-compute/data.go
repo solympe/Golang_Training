@@ -1,28 +1,22 @@
 package data
 
 import (
-	"fmt"
 	"strconv"
 )
 
 // Data ...
 type Data interface {
-	Compute(input string)
-	GetAnswer()
+	Compute() []int
 }
 
 type data struct {
-	answer []int
-}
-
-// GetAnswer ...
-func (d *data) GetAnswer() {
-	fmt.Println(d.answer)
+	input string
 }
 
 // Compute ...
-func (d *data) Compute(input string) {
-	slice := d.splitInput(input)
+func (d *data) Compute() []int {
+
+	slice := d.splitInput(d.input)
 	numbers := []string{}
 	operators := []string{}
 
@@ -36,9 +30,9 @@ func (d *data) Compute(input string) {
 	if len(operators) == 0 && len(numbers) == 1 {
 		num, _ := strconv.Atoi(numbers[0])
 		answer := []int{num}
-		d.answer = answer
+		return answer
 	}
-	d.answer = d.recurCount(numbers, operators, 0, len(numbers)-1)
+	return d.recurCount(numbers, operators, 0, len(numbers)-1)
 }
 
 func (d *data) calculate(na int, x string, nb int) int {
@@ -77,7 +71,7 @@ func (d *data) recurCount(numbers []string, operator []string, iStart int, iEnd 
 }
 
 func (d *data) splitInput(input string) (output []string) {
-	tmp := ""
+	var tmp string
 	for i := range input {
 		if input[i] != '+' && input[i] != '-' && input[i] != '*' {
 			tmp += string(input[i])
@@ -94,7 +88,8 @@ func (d *data) splitInput(input string) (output []string) {
 }
 
 // NewData ...
-func NewData() Data {
+func NewData(input string) Data {
 	return &data{
+		input: input,
 	}
 }
