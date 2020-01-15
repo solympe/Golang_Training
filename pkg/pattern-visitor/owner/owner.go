@@ -2,7 +2,7 @@ package owner
 
 import "github.com/solympe/Golang_Training/pkg/pattern-visitor/company"
 
-// CompanyOwnerManager ...
+// Owner ...
 type Owner interface {
 	VisitCompanies() string
 }
@@ -14,6 +14,9 @@ type owner struct {
 // VisitCompanies ...
 func (o *owner) VisitCompanies() string {
 	var result string
+	if len(o.companies) == 0 {
+		return "empty response"
+	}
 	for _, places := range o.companies {
 		result += places.AcceptInspector() + " "
 	}
