@@ -1,6 +1,12 @@
-package subscription
+package subscriber
 
 import "fmt"
+
+// Subscriber ...
+type Subscriber interface {
+	GetName() string
+	GetNotify(message string)
+}
 
 type subscriber struct {
 	name string
@@ -13,10 +19,10 @@ func (s *subscriber) GetName() string {
 
 // GetNotify returns recieved message
 func (s *subscriber) GetNotify(message string) {
-	fmt.Println("I am " + s.name + " and i received " + message)
+	fmt.Println("I am " + s.name + " and I received: " + message)
 }
 
-// NewSubscriberManipulator returns new copy of subscriber
-func NewSubscriberManipulator(name string) SubscriberManipulator {
+// NewSubscriber returns new copy of subscriber
+func NewSubscriber(name string) Subscriber {
 	return &subscriber{name: name}
 }

@@ -1,21 +1,21 @@
 package main
 
 import (
-	n "github.com/solympe/Golang_Training/pkg/pattern-observer/news"
-	s "github.com/solympe/Golang_Training/pkg/pattern-observer/subscription"
+	"github.com/solympe/Golang_Training/pkg/pattern-observer/news"
+	"github.com/solympe/Golang_Training/pkg/pattern-observer/subscriber"
 )
 
 func main() {
-	newsPortal := n.NewNewsManipulator()
-	subscriber := s.NewSubscriberManipulator("John")
-	subscriber2 := s.NewSubscriberManipulator("Jake")
+	newsPortal := news.NewNews()
+	subscriber1 := subscriber.NewSubscriber("John")
+	subscriber2 := subscriber.NewSubscriber("Jake")
 
-	newsPortal.AddSubscriber(subscriber)
+	newsPortal.AddSubscriber(subscriber1)
 	newsPortal.AddSubscriber(subscriber2)
+
+	newsPortal.DeleteSubscriber(subscriber1)
+
 	newsPortal.ShowSubscribers()
 
-	newsPortal.DeleteSubscriber(subscriber)
-	newsPortal.ShowSubscribers()
-
-	newsPortal.Notify("Something")
+	newsPortal.Notify("Message")
 }
