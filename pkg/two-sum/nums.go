@@ -1,4 +1,9 @@
-package two_sum
+package nums
+
+// Nums represents nums Interface
+type Nums interface {
+	TwoSum() []int
+}
 
 type nums struct {
 	nums   []int
@@ -20,7 +25,7 @@ func (g *nums) TwoSum() []int {
 	return result
 }
 
-// NewNumsSolver returns new nums interface
-func NewNumsSolver(numbs []int, target int) NumsSolver {
+// NewNums returns new nums interface
+func NewNums(numbs []int, target int) Nums {
 	return &nums{nums: numbs, target: target}
 }
