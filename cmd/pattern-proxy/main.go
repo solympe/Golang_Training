@@ -3,19 +3,19 @@ package main
 import (
 	"fmt"
 
-	c "github.com/solympe/Golang_Training/pkg/pattern-proxy/cache"
-	db "github.com/solympe/Golang_Training/pkg/pattern-proxy/data-base"
-	dbn "github.com/solympe/Golang_Training/pkg/pattern-proxy/db-node"
+	"github.com/solympe/Golang_Training/pkg/pattern-proxy/cache"
+	"github.com/solympe/Golang_Training/pkg/pattern-proxy/database"
+	"github.com/solympe/Golang_Training/pkg/pattern-proxy/proxy"
 )
 
 func main() {
-	var cache = c.NewCacheController()
-	var dataBaseOrig = db.NewDataBaseController(cache)
-	var dataBaseNode = dbn.NewDataBaseNodeController(cache, dataBaseOrig)
+	var dataCache = cache.NewCache()
+	var dataBase = database.NewDataBase(dataCache)
+	var dbProxy = proxy.NewProxy(dataCache, dataBase)
 
-	dataBaseOrig.SendData("new data")
-	fmt.Println(dataBaseNode.GetData(), "=", dataBaseOrig.GetData())
+	dataBase.SendData("new data")
+	fmt.Println(dbProxy.GetData(), "=", dataBase.GetData())
 
-	dataBaseNode.SendData("new data 2")
-	fmt.Println(dataBaseNode.GetData(), "=", dataBaseOrig.GetData())
+	dbProxy.SendData("new data 2")
+	fmt.Println(dbProxy.GetData(), "=", dataBase.GetData())
 }
