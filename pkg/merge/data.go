@@ -1,24 +1,21 @@
-package merge
+package data
 
-import (
-	"sort"
-)
+import "sort"
+
+// Data ...
+type Data interface {
+	Merge(data1 Data, data2 Data) []int
+	getNums() []int
+	getVal() int
+}
 
 type data struct {
 	nums []int
 	val  int
 }
 
-func (d *data) getNums() []int {
-	return d.nums
-}
-
-func (d *data) getVal() int {
-	return d.val
-}
-
 // Merge ...
-func Merge(data1 DataMerger, data2 DataMerger) []int {
+func (d *data) Merge(data1 Data, data2 Data) []int {
 	nums1 := data1.getNums()
 	nums2 := data2.getNums()
 	m := data1.getVal()
@@ -45,8 +42,16 @@ func Merge(data1 DataMerger, data2 DataMerger) []int {
 	return nums1
 }
 
-// NewDataMerger ...
-func NewDataMerger(nums []int, val int) DataMerger {
+func (d *data) getNums() []int {
+	return d.nums
+}
+
+func (d *data) getVal() int {
+	return d.val
+}
+
+// NewData ...
+func NewData(nums []int, val int) Data {
 	return &data{
 		nums: nums,
 		val:  val,
