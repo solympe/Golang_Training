@@ -11,8 +11,8 @@ func main() {
 
 	planeAirport := airport.NewAirport(planeA, planeB)
 
-	planeA.GetMediator(planeAirport)
-	planeB.GetMediator(planeAirport)
+	planeA.GetAirport(planeAirport)
+	planeB.GetAirport(planeAirport)
 
 	planeA.DelayFlight(3)
 	planeB.DelayFlight(2)

@@ -10,7 +10,7 @@ import (
 // APlane ...
 type APlane interface {
 	DelayFlight(delay int)
-	GetMediator(airport airport.Airport)
+	GetAirport(airport airport.Airport)
 	AddDelay(delay int)
 	PrintDelay()
 }
@@ -20,8 +20,8 @@ type planeA struct {
 	departureDelay int
 }
 
-// GetMediator sets mediator of plane
-func (p *planeA) GetMediator(airport airport.Airport) {
+// GetAirport sets mediator of plane
+func (p *planeA) GetAirport(airport airport.Airport) {
 	p.mediator = airport
 }
 

@@ -4,7 +4,7 @@ import "fmt"
 
 type planeManager interface {
 	DelayFlight(delay int)
-	GetMediator(airport Airport)
+	GetAirport(airport Airport)
 	AddDelay(delay int)
 	PrintDelay()
 }
@@ -41,7 +41,7 @@ func (a *airport) ShowStatistic() {
 	planeManager.PrintDelay(a.planeB)
 }
 
-// NewAirport returns new copy of airport_manager
+// NewAirport returns new copy of airport
 func NewAirport(plane planeManager, helicopter planeManager) Airport {
 	return &airport{plane, helicopter}
 }
