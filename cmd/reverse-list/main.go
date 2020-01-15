@@ -3,15 +3,15 @@ package main
 import (
 	"fmt"
 
-	lf "github.com/solympe/Golang_Training/pkg/reverse-list"
+	list "github.com/solympe/Golang_Training/pkg/reverse-list"
 )
 
 func main() {
-	n5 := lf.NewListNode(5, nil)
-	n4 := lf.NewListNode(4, n5)
-	n3 := lf.NewListNode(3, n4)
-	n2 := lf.NewListNode(2, n3)
-	n1 := lf.NewListNode(1, n2)
+	n5 := list.NewListNode(5, nil)
+	n4 := list.NewListNode(4, n5)
+	n3 := list.NewListNode(3, n4)
+	n2 := list.NewListNode(2, n3)
+	n1 := list.NewListNode(1, n2)
 
 	result := n1.ReverseList(n1)
 	for {
