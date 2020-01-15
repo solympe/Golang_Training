@@ -1,30 +1,38 @@
-package reverse_list
+package listnode
+
+// ListNode ...
+type ListNode interface {
+	ReverseList(head ListNode) ListNode
+	GetNext() ListNode
+	setNext(next ListNode)
+}
 
 type listNode struct {
 	val  int
-	next ListNodeReverser
+	next ListNode
 }
 
 // ReverseList return reversed list
-func (l *listNode) ReverseList(head ListNodeReverser) ListNodeReverser {
-	if head == nil || head.getNext() == nil {
+func (l *listNode) ReverseList(head ListNode) ListNode {
+	if head == nil || head.GetNext() == nil {
 		return head
 	}
-	revPoint := head.ReverseList(head.getNext())
-	head.getNext().setNext(head)
+	revPoint := head.ReverseList(head.GetNext())
+	head.GetNext().setNext(head)
 	head.setNext(nil)
 	return revPoint
 }
 
-func (l *listNode) setNext(next ListNodeReverser) {
-	l.next = next
-}
-
-func (l *listNode) getNext() ListNodeReverser {
+// GetNext ...
+func (l *listNode) GetNext() ListNode {
 	return l.next
 }
 
-// NewListNodeReverser returns new element of list
-func NewListNodeReverser(val int, next ListNodeReverser) ListNodeReverser {
+func (l *listNode) setNext(next ListNode) {
+	l.next = next
+}
+
+// NewListNode returns new element of list
+func NewListNode(val int, next ListNode) ListNode {
 	return &listNode{val, next}
 }

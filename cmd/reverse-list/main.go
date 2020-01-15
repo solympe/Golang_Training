@@ -7,11 +7,18 @@ import (
 )
 
 func main() {
-	n5 := lf.NewListNodeReverser(5, nil)
-	n4 := lf.NewListNodeReverser(4, n5)
-	n3 := lf.NewListNodeReverser(3, n4)
-	n2 := lf.NewListNodeReverser(2, n3)
-	n1 := lf.NewListNodeReverser(1, n2)
+	n5 := lf.NewListNode(5, nil)
+	n4 := lf.NewListNode(4, n5)
+	n3 := lf.NewListNode(3, n4)
+	n2 := lf.NewListNode(2, n3)
+	n1 := lf.NewListNode(1, n2)
 
-	fmt.Println(n1.ReverseList(n1))
+	result := n1.ReverseList(n1)
+	for {
+		if result == nil {
+			break
+		}
+		fmt.Println(result)
+		result = result.GetNext()
+	}
 }
