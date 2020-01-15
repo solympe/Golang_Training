@@ -13,9 +13,11 @@ func main() {
 	var dataBase = database.NewDataBase(dataCache)
 	var dbProxy = proxy.NewProxy(dataCache, dataBase)
 
-	dataBase.SendData("new data")
-	fmt.Println(dbProxy.GetData(), "=", dataBase.GetData())
+	dataBase.SendData("data")
+	fmt.Println(dbProxy.GetData())
+	fmt.Println(dataBase.GetData())
 
-	dbProxy.SendData("new data 2")
-	fmt.Println(dbProxy.GetData(), "=", dataBase.GetData())
+	dbProxy.SendData("new data")
+	fmt.Println(dbProxy.GetData())
+	fmt.Println(dataBase.GetData())
 }
