@@ -1,4 +1,4 @@
-package pattern_factor_test
+package pattern_factory_test
 
 import (
 	"testing"
