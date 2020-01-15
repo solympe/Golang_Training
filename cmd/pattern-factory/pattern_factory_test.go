@@ -3,7 +3,7 @@ package pattern_factor_test
 import (
 	"testing"
 
-	f "github.com/solympe/Golang_Training/pkg/pattern-factory/factory"
+	"github.com/solympe/Golang_Training/pkg/pattern-factory/factory"
 )
 
 type testCase struct {
@@ -18,12 +18,12 @@ var tests = []testCase{
 
 func TestAndroidFactory(t *testing.T) {
 	for _, pairs := range tests {
-		factory := f.NewFactoryCreator()
-		typeofElem := factory.CreateAndroid(pairs.input).GetType()
-		if typeofElem == pairs.waitType {
-			t.Log("Test passed! Waited:", pairs.waitType, ", Gave:", typeofElem)
+		androidFactory := factory.NewFactory()
+		android := androidFactory.CreateAndroid(pairs.input).GetType()
+		if android == pairs.waitType {
+			t.Log("Test passed! Waited:", pairs.waitType, ", Gave:", android)
 		} else {
-			t.Error("Test failed! Waited:", pairs.waitType, ", Gave:", typeofElem)
+			t.Error("Test failed! Waited:", pairs.waitType, ", Gave:", android)
 		}
 	}
 }
