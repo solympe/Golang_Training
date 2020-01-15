@@ -3,19 +3,20 @@ package main
 import (
 	"fmt"
 
-	mt "github.com/solympe/Golang_Training/pkg/merge-trees"
+	tree "github.com/solympe/Golang_Training/pkg/merge-trees"
 )
 
 func main() {
-	trr := mt.NewTreeMerger(100, nil, nil)
+	trr := tree.NewTreeNode(100, nil, nil)
 
-	bl := mt.NewTreeMerger(1, nil, nil)
+	bl := tree.NewTreeNode(1, nil, nil)
 
-	br := mt.NewTreeMerger(4, nil, nil)
-	tr := mt.NewTreeMerger(3, nil, trr)
+	br := tree.NewTreeNode(4, nil, nil)
+	tr := tree.NewTreeNode(3, nil, trr)
 
-	b0 := mt.NewTreeMerger(2, bl, br)
-	t0 := mt.NewTreeMerger(4, nil, tr)
+	b0 := tree.NewTreeNode(2, bl, br)
+	t0 := tree.NewTreeNode(4, nil, tr)
 
-	fmt.Println(t0.MergeTrees(t0, b0).GetVal(), "is a value of head")
+	result := t0.MergeTrees(t0, b0)
+	fmt.Println(result.GetVal(), "is a value of head")
 }
