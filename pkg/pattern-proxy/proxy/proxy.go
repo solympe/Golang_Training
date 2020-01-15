@@ -1,8 +1,9 @@
 package proxy
 
+// Proxy ...
 type Proxy interface {
 	GetData() string
-	SendData(data string)
+	Send(data string)
 }
 
 type proxy struct {
@@ -10,10 +11,10 @@ type proxy struct {
 	dataBase Proxy
 }
 
-// SendData updates data in the main database and cache
-func (p *proxy) SendData(data string) {
-	Proxy.SendData(p.cache, data)
-	Proxy.SendData(p.dataBase, data)
+// Send updates data in the main database and cache
+func (p *proxy) Send(data string) {
+	Proxy.Send(p.cache, data)
+	Proxy.Send(p.dataBase, data)
 }
 
 // GetData returns 'fresh' data from cache

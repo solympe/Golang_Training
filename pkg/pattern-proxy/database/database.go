@@ -3,7 +3,7 @@ package database
 // DataBase ...
 type DataBase interface {
 	GetData() string
-	SendData(data string)
+	Send(data string)
 }
 
 type dataBase struct {
@@ -11,10 +11,10 @@ type dataBase struct {
 	cache DataBase
 }
 
-// SendData updates data in the main database and cache
-func (db *dataBase) SendData(data string) {
+// Send updates data in the main database and cache
+func (db *dataBase) Send(data string) {
 	db.data = data
-	DataBase.SendData(db.cache, data)
+	DataBase.Send(db.cache, data)
 }
 
 // GetData returns data from main database

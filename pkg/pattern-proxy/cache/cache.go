@@ -1,8 +1,9 @@
 package cache
 
+// Cache ...
 type Сache interface {
 	GetData() string
-	SendData(data string)
+	Send(data string)
 }
 
 type cache struct {
@@ -14,8 +15,8 @@ func (c *cache) GetData() string {
 	return c.data
 }
 
-// SendData updates data in cache
-func (c *cache) SendData(data string) {
+// Send updates data in cache
+func (c *cache) Send(data string) {
 	c.data = data
 }
 
