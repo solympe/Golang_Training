@@ -1,17 +1,27 @@
 package data
 
-import "strconv"
+import (
+	"fmt"
+	"strconv"
+)
 
 // Data ...
 type Data interface {
-	Compute(input string) []int
+	Compute(input string)
+	GetAnswer()
 }
 
 type data struct {
+	answer []int
+}
+
+// GetAnswer ...
+func (d *data) GetAnswer() {
+	fmt.Println(d.answer)
 }
 
 // Compute ...
-func (d *data) Compute(input string) []int {
+func (d *data) Compute(input string) {
 	slice := d.splitInput(input)
 	numbers := []string{}
 	operators := []string{}
@@ -26,9 +36,9 @@ func (d *data) Compute(input string) []int {
 	if len(operators) == 0 && len(numbers) == 1 {
 		num, _ := strconv.Atoi(numbers[0])
 		answer := []int{num}
-		return answer
+		d.answer = answer
 	}
-	return d.recurCount(numbers, operators, 0, len(numbers)-1)
+	d.answer = d.recurCount(numbers, operators, 0, len(numbers)-1)
 }
 
 func (d *data) calculate(na int, x string, nb int) int {
