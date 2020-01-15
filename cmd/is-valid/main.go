@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 
-	val "github.com/solympe/Golang_Training/pkg/is-valid"
+	data "github.com/solympe/Golang_Training/pkg/is-valid"
 )
 
 func main() {
-	str := val.NewDataBoxValidator("())")
+	str := data.NewData("())")
 
 	fmt.Println(str.IsValid())
 }
