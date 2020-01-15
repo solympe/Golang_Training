@@ -1,8 +1,18 @@
-package add_two_numbers
+package listnode
+
+// ListNode ...
+type ListNode interface {
+	AddTwoNumbers(l1 ListNode, l2 ListNode) ListNode
+	GetVal() int
+	GetNext() ListNode
+	sumVal(val int)
+	setVal(val int)
+	setNext(next ListNode)
+}
 
 type listNode struct {
 	val  int
-	next ListNodeExecutor
+	next ListNode
 }
 
 // GetVal ...
@@ -11,20 +21,20 @@ func (l *listNode) GetVal() int {
 }
 
 // GetNext ...
-func (l *listNode) GetNext() ListNodeExecutor {
+func (l *listNode) GetNext() ListNode {
 	return l.next
 }
 
 // AddTwoNumbers sums 2 lists and returns new list
-func (l *listNode) AddTwoNumbers(l1 ListNodeExecutor, l2 ListNodeExecutor) ListNodeExecutor {
+func (l *listNode) AddTwoNumbers(l1 ListNode, l2 ListNode) ListNode {
 	overflow := 0
-	result := NewListNodeExecutor(0, nil)
+	result := NewListNode(0, nil)
 	return l.makeSum(l1, l2, result, overflow)
 }
 
-func (l *listNode) makeSum(l1 ListNodeExecutor, l2 ListNodeExecutor, node ListNodeExecutor, overflow int) ListNodeExecutor {
-	var next1 ListNodeExecutor = nil
-	var next2 ListNodeExecutor = nil
+func (l *listNode) makeSum(l1 ListNode, l2 ListNode, node ListNode, overflow int) ListNode {
+	var next1 ListNode = nil
+	var next2 ListNode = nil
 
 	node.setVal(node.GetVal() + overflow)
 	if l1 != nil {
@@ -44,13 +54,13 @@ func (l *listNode) makeSum(l1 ListNodeExecutor, l2 ListNodeExecutor, node ListNo
 		overflow = 0
 	}
 	if next1 != nil || next2 != nil || overflow > 0 {
-		node.setNext(NewListNodeExecutor(0, nil))
+		node.setNext(NewListNode(0, nil))
 		l.makeSum(next1, next2, node.GetNext(), overflow)
 	}
 	return node
 }
 
-func (l *listNode) setNext(next ListNodeExecutor) {
+func (l *listNode) setNext(next ListNode) {
 	l.next = next
 }
 
@@ -62,7 +72,7 @@ func (l *listNode) sumVal(val int) {
 	l.val += val
 }
 
-// NewListNodeExecutor returns new copy of node
-func NewListNodeExecutor(value int, next ListNodeExecutor) ListNodeExecutor {
+// NewListNode returns new copy of node
+func NewListNode(value int, next ListNode) ListNode {
 	return &listNode{value, next}
 }
