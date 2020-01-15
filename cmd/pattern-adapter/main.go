@@ -8,13 +8,12 @@ import (
 )
 
 func main() {
-	horseRider := rider.NewRiderManipulator()
+	ponyRider := rider.NewRider()
+	targetPony := pony.NewPony()
 
-	targetPony := pony.NewPonyRider()
-	adapteeHorse := horse.NewHorseRider()
+	adapteeHorse := horse.NewHorse()
+	adapterSaddle := saddle.NewSaddle(adapteeHorse)
 
-	adapterSaddle := saddle.NewSaddleRider(adapteeHorse)
-
-	horseRider.Ride(targetPony)
-	horseRider.Ride(adapterSaddle)
+	ponyRider.Ride(targetPony)
+	ponyRider.Ride(adapterSaddle)
 }

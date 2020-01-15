@@ -2,14 +2,20 @@ package pony
 
 import "fmt"
 
-type pony struct{}
+// Pony is a target interface
+type Pony interface {
+	RideOnPony()
+}
+
+type pony struct {
+}
 
 // RideOnPony ...
 func (p *pony) RideOnPony() {
 	fmt.Println("Im riding on pony")
 }
 
-// NewPonyRider ...
-func NewPonyRider() PonyRider {
+// NewPony ...
+func NewPony() Pony {
 	return &pony{}
 }
