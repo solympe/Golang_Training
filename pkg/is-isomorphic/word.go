@@ -1,9 +1,16 @@
-package is_isomorphic
+package word
 
 import (
 	"reflect"
 	"strings"
 )
+
+// Word is a word interface
+type Word interface {
+	IsIsomorphic(word2 Word) bool
+	GetData() string
+	createMap() []int
+}
 
 type word struct {
 	data string
@@ -15,7 +22,7 @@ func (w *word) GetData() string {
 }
 
 // IsIsomorphic ...
-func (w *word) IsIsomorphic(word2 Worder) bool {
+func (w *word) IsIsomorphic(word2 Word) bool {
 	m1 := w.createMap()
 	m2 := word2.createMap()
 	return reflect.DeepEqual(m1, m2)
@@ -38,7 +45,7 @@ func (w *word) createMap() []int {
 	return intSlice
 }
 
-// NewWorder ...
-func NewWorder(data string) Worder {
+// NewWord ...
+func NewWord(data string) Word {
 	return &word{data: data}
 }
