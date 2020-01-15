@@ -1,4 +1,10 @@
-package interselect
+package slice
+
+// Slice represents an interface for slice struct
+type Slice interface {
+	GetSlice() []int
+	Intersect(nums1 []int, nums2 []int) []int
+}
 
 type slice struct {
 	data []int
@@ -9,7 +15,7 @@ func (s *slice) GetSlice() []int {
 	return s.data
 }
 
-// Interselect compute intersection of 2 slices
+// Intersect compute intersection of 2 slices
 func (s *slice) Intersect(nums1 []int, nums2 []int) []int {
 	result := []int{}
 	for _, num := range nums1 {
@@ -24,7 +30,7 @@ func (s *slice) Intersect(nums1 []int, nums2 []int) []int {
 	return result
 }
 
-// NewSlicer returns new copy of Slicer
-func NewSlicer(sliceIn []int) Slicer {
+// NewSlice returns new copy of Slice
+func NewSlice(sliceIn []int) Slice {
 	return &slice{data: sliceIn}
 }
