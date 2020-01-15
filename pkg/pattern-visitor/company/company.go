@@ -1,29 +1,33 @@
 package company
 
 type inspector interface {
-	VisitCompany(company CompanyRegulator) string
+	VisitCompany(company Company) string
 }
 
-// CompanyRegulator represents companies interface
-type CompanyRegulator interface {
+// Company ...
+type Company interface {
 	MakeReport(report string)
 	SendReport() string
-	AddInspector(inspector inspector)
 	AcceptInspector() string
 }
 
 type company struct {
 	inspector inspector
 	report    string
+	reported  bool
 }
 
 // MakeReport ...
 func (c *company) MakeReport(report string) {
 	c.report = report
+	c.reported = true
 }
 
 // SendReport ...
 func (c *company) SendReport() string {
+	if c.reported == false {
+		return "EMPTY"
+	}
 	return c.report
 }
 
@@ -32,12 +36,9 @@ func (c *company) AcceptInspector() string {
 	return c.inspector.VisitCompany(c)
 }
 
-// AddInspector ...
-func (c *company) AddInspector(inspector inspector) {
-	c.inspector = inspector
-}
-
-// NewCompanyRegulator ...
-func NewCompanyRegulator() CompanyRegulator {
-	return &company{}
+// NewCompany ...
+func NewCompany(ins inspector) Company {
+	return &company{
+		inspector: ins,
+	}
 }

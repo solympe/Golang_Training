@@ -3,30 +3,22 @@ package main
 import (
 	"fmt"
 
-	cp "github.com/solympe/Golang_Training/pkg/pattern-visitor/company"
-	cm "github.com/solympe/Golang_Training/pkg/pattern-visitor/company_owner"
-	ci "github.com/solympe/Golang_Training/pkg/pattern-visitor/inspector"
+	"github.com/solympe/Golang_Training/pkg/pattern-visitor/company"
+	"github.com/solympe/Golang_Training/pkg/pattern-visitor/inspector"
+	"github.com/solympe/Golang_Training/pkg/pattern-visitor/owner"
 )
 
 func main() {
+	companyInspector := inspector.NewInspector()
+	companyA := company.NewCompany(companyInspector)
+	companyB := company.NewCompany(companyInspector)
+	companyC := company.NewCompany(companyInspector)
 
-	companyA := cp.NewCompanyRegulator()
-	companyB := cp.NewCompanyRegulator()
-	companyC := cp.NewCompanyRegulator()
-	companyManager := cm.NewCompanyOwnerManager()
-	inspector := ci.NewInspectorVisitor()
+	companyOwner := owner.NewOwner(companyA, companyB, companyC)
 
-	companyManager.AddCompany(companyA)
-	companyManager.AddCompany(companyB)
-	companyManager.AddCompany(companyC)
-
-	companyA.MakeReport("report A")
+	//companyA.MakeReport("report A")
 	companyB.MakeReport("report B")
 	companyC.MakeReport("report C")
 
-	companyA.AddInspector(inspector)
-	companyB.AddInspector(inspector)
-	companyC.AddInspector(inspector)
-
-	fmt.Println(companyManager.VisitCompanies())
+	fmt.Println(companyOwner.VisitCompanies())
 }
