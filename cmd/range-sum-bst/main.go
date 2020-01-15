@@ -3,16 +3,18 @@ package main
 import (
 	"fmt"
 
-	rs "github.com/solympe/Golang_Training/pkg/range-sum-bst"
+	tree "github.com/solympe/Golang_Training/pkg/range-sum-bst"
 )
 
 func main() {
-	trr := rs.NewTreeNodeRanger(nil, nil, 40)
-	tr := rs.NewTreeNodeRanger(nil, trr, 15)
-	tll := rs.NewTreeNodeRanger(nil, nil, 5)
-	tl := rs.NewTreeNodeRanger(tll, nil, 6)
-	t := rs.NewTreeNodeRanger(tl, tr, 10)
+	trr := tree.NewTreeNode(nil, nil, 40)
+	tr := tree.NewTreeNode(nil, trr, 15)
 
-	result := t.RangeSum(t, 5, 10)
+	tll := tree.NewTreeNode(nil, nil, 5)
+	tl := tree.NewTreeNode(tll, nil, 6)
+
+	t0 := tree.NewTreeNode(tl, tr, 10)
+
+	result := t0.RangeSum(t0, 5, 10)
 	fmt.Println("Answer:", result)
 }
