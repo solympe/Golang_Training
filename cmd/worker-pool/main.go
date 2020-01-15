@@ -1,13 +1,13 @@
 package main
 
-import wp "github.com/solympe/Golang_Training/pkg/worker-pool"
+import foreman "github.com/solympe/Golang_Training/pkg/worker-pool"
 
 const countOfWorkers = 5
 
 func main() {
 	chanOfMaster := make(chan string, countOfWorkers)
 
-	master := wp.NewForemaner(chanOfMaster)
+	master := foreman.NewForeman(chanOfMaster)
 	master.StartWork(countOfWorkers)
 
 	close(chanOfMaster)

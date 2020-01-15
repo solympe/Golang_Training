@@ -1,4 +1,4 @@
-package worker_pool
+package foreman
 
 import (
 	"fmt"
@@ -7,6 +7,11 @@ import (
 	"sync"
 	"time"
 )
+
+// Foreman represents foremans interface
+type Foreman interface {
+	StartWork(countOfWorkers int)
+}
 
 type foreman struct {
 	channel chan string
@@ -37,7 +42,7 @@ func (f *foreman) checkWork(i int, wg *sync.WaitGroup) {
 	wg.Done()
 }
 
-// NewForemaner returns new copy of foreman
-func NewForemaner(channelIn chan string) Foremaner {
+// NewForeman returns new copy of foreman
+func NewForeman(channelIn chan string) Foreman {
 	return &foreman{channel: channelIn}
 }
