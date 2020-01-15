@@ -1,31 +1,35 @@
-package planes
+package plane
 
 import (
 	"fmt"
 	"strconv"
 
-	"github.com/solympe/Golang_Training/pkg/pattern-mediator/airport_manager"
+	"github.com/solympe/Golang_Training/pkg/pattern-mediator/airport"
 )
 
-type planeManagerA interface {
+// APlane ...
+type APlane interface {
 	DelayFlight(delay int)
-	GetMediator(airport airport_manager.AirportManager)
+	GetMediator(airport airport.Airport)
 	AddDelay(delay int)
 	PrintDelay()
 }
 
 type planeA struct {
-	mediator       airport_manager.AirportManager
+	mediator       airport.Airport
 	departureDelay int
 }
 
-// GetMediator sets mediator of planes
-func (p *planeA) GetMediator(airport airport_manager.AirportManager) {
+// GetMediator sets mediator of plane
+func (p *planeA) GetMediator(airport airport.Airport) {
 	p.mediator = airport
 }
 
 // DelayFlight sends notify to mediator with delay time
 func (p *planeA) DelayFlight(delay int) {
+	if p.mediator == nil {
+		panic("Mediator error!")
+	}
 	p.mediator.Notify("delay planeA", delay)
 }
 
@@ -34,12 +38,12 @@ func (p *planeA) AddDelay(delay int) {
 	p.departureDelay += delay
 }
 
-// PrintDelay returns info about planes delay
+// PrintDelay returns info about plane delay
 func (p *planeA) PrintDelay() {
 	fmt.Println("Plane A delay: " + strconv.Itoa(p.departureDelay) + " hours")
 }
 
-// NewPlaneManagerA returns copy of new planeA
-func NewPlaneManagerA() planeManagerA {
+// NewPlaneA returns copy of new planeA
+func NewPlaneA() APlane {
 	return &planeA{}
 }

@@ -1,33 +1,47 @@
 package airport
 
-import (
-	ap "github.com/solympe/Golang_Training/pkg/pattern-mediator/airport_manager"
-	pm "github.com/solympe/Golang_Training/pkg/pattern-mediator/plane_manager"
-)
+import "fmt"
+
+type planeManager interface {
+	DelayFlight(delay int)
+	GetMediator(airport Airport)
+	AddDelay(delay int)
+	PrintDelay()
+}
+
+// Airport represents mediator methods
+type Airport interface {
+	Notify(message string, delay int)
+	ShowStatistic()
+}
 
 type airport struct {
-	planeA *pm.PlaneManager
-	planeB *pm.PlaneManager
+	planeA planeManager
+	planeB planeManager
 }
 
 // Notify gets messages from plane_manager and delays departure
 func (a *airport) Notify(message string, delay int) {
 	if message == "delay planeA" {
-		pm.PlaneManager.AddDelay(*a.planeA, delay)
-		pm.PlaneManager.AddDelay(*a.planeB, delay+2)
+		planeManager.AddDelay(a.planeA, delay)
+		planeManager.AddDelay(a.planeB, delay+2)
+
+		fmt.Println("The Plane A is delayed on", delay, ", plane B will be delayed on ", delay+2, "hours")
 	}
 	if message == "delay planeB" {
-		pm.PlaneManager.AddDelay(*a.planeB, delay)
+		planeManager.AddDelay(a.planeB, delay)
+		fmt.Println("The Plane B is delayed on", delay, "hours")
 	}
 }
 
 // ShowStatistic prints information about delay
 func (a *airport) ShowStatistic() {
-	pm.PlaneManager.PrintDelay(*a.planeB)
-	pm.PlaneManager.PrintDelay(*a.planeA)
+	fmt.Println("STATUS")
+	planeManager.PrintDelay(a.planeA)
+	planeManager.PrintDelay(a.planeB)
 }
 
 // NewAirport returns new copy of airport_manager
-func NewAirportManager(plane *pm.PlaneManager, helicopter *pm.PlaneManager) ap.AirportManager {
+func NewAirport(plane planeManager, helicopter planeManager) Airport {
 	return &airport{plane, helicopter}
 }
