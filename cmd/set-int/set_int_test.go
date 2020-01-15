@@ -3,7 +3,7 @@ package set_int_test
 import (
 	"testing"
 
-	si "github.com/solympe/Golang_Training/pkg/set-int"
+	int_struct "github.com/solympe/Golang_Training/pkg/set-int"
 )
 
 type testingS struct {
@@ -24,7 +24,7 @@ var tests = []testingS{
 }
 
 func TestSetInt(t *testing.T) {
-	sInt := si.NewIntStructExecutor(make(map[int]bool))
+	sInt := int_struct.NewIntStruct(make(map[int]bool))
 
 	for _, pairs := range tests {
 		var result bool
