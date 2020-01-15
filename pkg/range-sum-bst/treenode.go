@@ -1,4 +1,4 @@
-package range_sum_bst
+package treenode
 
 // TreeNode ...
 type TreeNode interface {
