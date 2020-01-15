@@ -18,7 +18,7 @@ func (db *dataBase) SendData(data string) {
 }
 
 // GetData returns data from main database
-func (db dataBase) GetData() string {
+func (db *dataBase) GetData() string {
 	return db.data
 }
 

@@ -17,7 +17,7 @@ func (p *proxy) SendData(data string) {
 }
 
 // GetData returns 'fresh' data from cache
-func (p proxy) GetData() string {
+func (p *proxy) GetData() string {
 	freshData := Proxy.GetData(p.cache)
 	return freshData
 }
