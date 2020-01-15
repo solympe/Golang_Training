@@ -1,12 +1,19 @@
-package has_cycle
+package listnode
+
+// ListNode ...
+type ListNode interface {
+	HasCycle(head ListNode) bool
+	GetNext() ListNode
+	GetVal() int
+}
 
 type listNode struct {
 	val  int
-	next ListNodeSolver
+	next ListNode
 }
 
 // GetNext ...
-func (l *listNode) GetNext() ListNodeSolver {
+func (l *listNode) GetNext() ListNode {
 	return l.next
 }
 
@@ -16,8 +23,8 @@ func (l *listNode) GetVal() int {
 }
 
 // HasCycle ...
-func (l *listNode) HasCycle(head ListNodeSolver) bool {
-	m := map[ListNodeSolver]int{}
+func (l *listNode) HasCycle(head ListNode) bool {
+	m := map[ListNode]int{}
 	for head != nil && head.GetNext() != nil {
 		_, ok := m[head.GetNext()]
 		if ok == true {
@@ -29,8 +36,8 @@ func (l *listNode) HasCycle(head ListNodeSolver) bool {
 	return false
 }
 
-// NewListNodeSolver ...
-func NewListNodeSolver(value int, next ListNodeSolver) ListNodeSolver {
+// NewListNode ...
+func NewListNode(value int, next ListNode) ListNode {
 	return &listNode{
 		val:  value,
 		next: next,
