@@ -1,18 +1,17 @@
-package data_box
+package data
 
 import "strconv"
 
-// DataBoxCompute ...
-type DataBoxCompute interface {
-	DiffWaysToCompute(input string) []int
+// Data ...
+type Data interface {
+	Compute(input string) []int
 }
 
-type dataBox struct {
-	data []int
+type data struct {
 }
 
-// DiffWaysToCompute ...
-func (d *dataBox) DiffWaysToCompute(input string) []int {
+// Compute ...
+func (d *data) Compute(input string) []int {
 	slice := d.splitInput(input)
 	numbers := []string{}
 	operators := []string{}
@@ -29,11 +28,10 @@ func (d *dataBox) DiffWaysToCompute(input string) []int {
 		answer := []int{num}
 		return answer
 	}
-	d.data = d.recurCount(numbers, operators, 0, len(numbers)-1)
-	return d.data
+	return d.recurCount(numbers, operators, 0, len(numbers)-1)
 }
 
-func (d *dataBox) calculate(na int, x string, nb int) int {
+func (d *data) calculate(na int, x string, nb int) int {
 	switch x {
 	case "+":
 		return na + nb
@@ -46,7 +44,7 @@ func (d *dataBox) calculate(na int, x string, nb int) int {
 	}
 }
 
-func (d *dataBox) recurCount(numbers []string, operator []string, iStart int, iEnd int) []int {
+func (d *data) recurCount(numbers []string, operator []string, iStart int, iEnd int) []int {
 	result := []int{}
 
 	if iStart == iEnd {
@@ -68,9 +66,8 @@ func (d *dataBox) recurCount(numbers []string, operator []string, iStart int, iE
 	return result
 }
 
-func (d *dataBox) splitInput(input string) (output []string) {
+func (d *data) splitInput(input string) (output []string) {
 	tmp := ""
-
 	for i := range input {
 		if input[i] != '+' && input[i] != '-' && input[i] != '*' {
 			tmp += string(input[i])
@@ -86,7 +83,8 @@ func (d *dataBox) splitInput(input string) (output []string) {
 	return output
 }
 
-// NewDataBox()
-func NewDataBox() DataBoxCompute {
-	return &dataBox{}
+// NewData ...
+func NewData() Data {
+	return &data{
+	}
 }
