@@ -1,21 +1,24 @@
 package rider
 
-import p "github.com/solympe/Golang_Training/pkg/pattern-adapter/pony"
+type pony interface {
+	Ride()
+}
 
 // Rider is a client interface
 type Rider interface {
-	Ride(horse p.Pony)
+	Ride(horse pony)
 }
 
 type rider struct {
 }
 
 // Ride ...
-func (r *rider) Ride(horse p.Pony) {
-	horse.RideOnPony()
+func (r *rider) Ride(horse pony) {
+	horse.Ride()
 }
 
 // NewRider ...
 func NewRider() Rider {
-	return &rider{}
+	return &rider{
+	}
 }

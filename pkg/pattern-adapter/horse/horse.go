@@ -2,20 +2,21 @@ package horse
 
 import "fmt"
 
-// HorseRider is an adaptee interface
-type HorseRider interface {
-	RideOnHorse()
+// Horse is an adaptee interface
+type Horse interface {
+	Ride()
 }
 
-type horse struct{
+type horse struct {
 }
 
-// RideOnHorse ...
-func (h *horse) RideOnHorse() {
+// Ride ...
+func (h *horse) Ride() {
 	fmt.Println("Im riding on horse")
 }
 
 // NewHorse ...
-func NewHorse() HorseRider {
-	return &horse{}
+func NewHorse() Horse {
+	return &horse{
+	}
 }

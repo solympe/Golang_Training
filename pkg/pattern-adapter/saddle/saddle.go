@@ -1,22 +1,20 @@
 package saddle
 
-import h "github.com/solympe/Golang_Training/pkg/pattern-adapter/horse"
-
 // Saddle is an adapter
 type Saddle interface {
-	RideOnPony()
+	Ride()
 }
 
 type saddle struct {
-	horseType h.HorseRider
+	horseType Saddle
 }
 
-// RideOnPony ...
-func (s *saddle) RideOnPony() {
-	s.horseType.RideOnHorse()
+// Ride ...
+func (s *saddle) Ride() {
+	s.horseType.Ride()
 }
 
 // NewSaddle ...
-func NewSaddle(horse h.HorseRider) Saddle {
+func NewSaddle(horse Saddle) Saddle {
 	return &saddle{horseType: horse}
 }
