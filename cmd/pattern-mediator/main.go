@@ -10,13 +10,13 @@ func main() {
 	planeA := plane_a.NewPlaneA()
 	planeB := plane_b.NewPlaneB()
 
-	planeAirport := airport.NewAirport(planeA, planeB)
+	planeAirport := airport.NewAirport()
 
-	planeA.SetAirport(planeAirport)
-	planeB.SetAirport(planeAirport)
+	planeA.Set(planeAirport)
+	planeB.Set(planeAirport)
 
-	planeA.DelayFlight(3)
-	planeB.DelayFlight(2)
+	planeA.Delay(3)
+	planeB.Delay(2)
 
-	planeAirport.ShowCommonDelay()
+	planeAirport.Status()
 }

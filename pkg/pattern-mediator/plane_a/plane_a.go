@@ -9,38 +9,34 @@ import (
 
 // APlane ...
 type APlane interface {
-	DelayFlight(delay int)
-	SetAirport(airport airport.Airport)
-	AddDelay(delay int)
-	PrintDelay()
+	Delay(delay int)
+	Set(airport airport.Airport)
+	Status()
 }
 
 type planeA struct {
-	mediator       airport.Airport
-	departureDelay int
+	airport airport.Airport
+	delay   int
 }
 
-// SetAirport sets mediator of plane_a
-func (p *planeA) SetAirport(airport airport.Airport) {
-	p.mediator = airport
+// Set sets airport of plane_a
+func (p *planeA) Set(airport airport.Airport) {
+	p.airport = airport
+	p.airport.Set(p)
 }
 
-// DelayFlight sends notify to mediator with delay time
-func (p *planeA) DelayFlight(delay int) {
-	if p.mediator == nil {
+// Delay sends notify to airport with delay time
+func (p *planeA) Delay(delay int) {
+	if p.airport == nil {
 		panic("Mediator error!")
 	}
-	p.mediator.Notify("delay planeA", delay)
+	p.delay += delay
+	p.airport.Notify(p, delay)
 }
 
-// AddDelay add common delay time to planeA
-func (p *planeA) AddDelay(delay int) {
-	p.departureDelay += delay
-}
-
-// PrintDelay returns info about plane_a delay
-func (p *planeA) PrintDelay() {
-	fmt.Println("Plane A delay: " + strconv.Itoa(p.departureDelay) + " hours")
+// Status returns info about plane_a delay
+func (p *planeA) Status() {
+	fmt.Println("Plane A delay: " + strconv.Itoa(p.delay) + " hours")
 }
 
 // NewPlaneA returns copy of new planeA
