@@ -20,7 +20,7 @@ var tests = []testStruct{
 
 func TestMerge(t *testing.T) {
 	for _, pairs := range tests {
-		result := pairs.input1.Merge(pairs.input1, pairs.input2)
+		result := pairs.input1.Merge(pairs.input2)
 		if reflect.DeepEqual(result, pairs.wait) {
 			t.Log("Test passed", pairs.wait, "expected", result, "are returned")
 		} else {

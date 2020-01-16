@@ -4,7 +4,7 @@ import "sort"
 
 // Data ...
 type Data interface {
-	Merge(data1 Data, data2 Data) []int
+	Merge(data Data) []int
 	getNums() []int
 	getVal() int
 }
@@ -15,11 +15,11 @@ type data struct {
 }
 
 // Merge ...
-func (d *data) Merge(data1 Data, data2 Data) []int {
-	nums1 := data1.getNums()
-	nums2 := data2.getNums()
-	m := data1.getVal()
-	n := data2.getVal()
+func (d *data) Merge(data Data) []int {
+	nums1 := d.nums
+	nums2 := data.getNums()
+	m := d.val
+	n := data.getVal()
 
 	if n == 0 {
 		return nums1
