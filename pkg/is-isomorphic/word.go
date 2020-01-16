@@ -9,7 +9,7 @@ type word struct {
 	data string
 }
 
-// GetData ...
+// Get ...
 func (w *word) GetData() string {
 	return w.data
 }

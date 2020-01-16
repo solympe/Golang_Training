@@ -1,24 +1,26 @@
 package cache
 
-import (
-	"github.com/solympe/Golang_Training/pkg/pattern-proxy/db-functions"
-)
+// Cache ...
+type Cache interface {
+	Get() (mySpecificData string)
+	Set(mySpecificData string)
+}
 
 type cache struct {
-	data string
+	mySpecificData string
 }
 
-// GetData returns data from cache
-func (c *cache) GetData() string {
-	return c.data
+// Get returns data from cache
+func (c *cache) Get() string {
+	return c.mySpecificData
 }
 
-// SendData updates data in cache
-func (c *cache) SendData(data string) {
-	c.data = data
+// Set updates data in cache
+func (c *cache) Set(mySpecificData string) {
+	c.mySpecificData = mySpecificData
 }
 
 // NewCache returns new instance of cache
-func NewCache() db_functions.DBFunctions {
+func NewCache() Cache {
 	return &cache{}
 }

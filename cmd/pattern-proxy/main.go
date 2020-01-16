@@ -3,19 +3,26 @@ package main
 import (
 	"fmt"
 
-	c "github.com/solympe/Golang_Training/pkg/pattern-proxy/cache"
-	db "github.com/solympe/Golang_Training/pkg/pattern-proxy/data-base"
-	dbn "github.com/solympe/Golang_Training/pkg/pattern-proxy/db-node"
+	"github.com/solympe/Golang_Training/pkg/pattern-proxy/cache"
+	"github.com/solympe/Golang_Training/pkg/pattern-proxy/database"
+	"github.com/solympe/Golang_Training/pkg/pattern-proxy/proxy"
 )
 
 func main() {
-	var cache = c.NewCache()
-	var dataBaseOrig = db.NewDB(cache)
-	var dataBaseNode = dbn.NewDBNode(cache, dataBaseOrig)
+	var dataBase = database.NewDataBase()
+	var dataCache = cache.NewCache()
 
-	dataBaseOrig.SendData("new data")
-	fmt.Println(dataBaseNode.GetData(), "=", dataBaseOrig.GetData())
+	var dbProxy = proxy.NewProxy(dataBase, dataCache)
 
-	dataBaseNode.SendData("new data 2")
-	fmt.Println(dataBaseNode.GetData(), "=", dataBaseOrig.GetData())
+	dataBase.Set("new data" )
+	fmt.Println(dbProxy.Get())
+	fmt.Println(dataBase.Get())
+
+	dataBase.Set("new data2" )
+	fmt.Println(dbProxy.Get())
+	fmt.Println(dataBase.Get())
+
+	dbProxy.Set("data 3")
+	fmt.Println(dbProxy.Get())
+	fmt.Println(dataBase.Get())
 }
