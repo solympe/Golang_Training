@@ -1,4 +1,4 @@
-package plane
+package plane_a
 
 import (
 	"fmt"
@@ -10,7 +10,7 @@ import (
 // APlane ...
 type APlane interface {
 	DelayFlight(delay int)
-	GetAirport(airport airport.Airport)
+	SetAirport(airport airport.Airport)
 	AddDelay(delay int)
 	PrintDelay()
 }
@@ -20,8 +20,8 @@ type planeA struct {
 	departureDelay int
 }
 
-// GetAirport sets mediator of plane
-func (p *planeA) GetAirport(airport airport.Airport) {
+// SetAirport sets mediator of plane_a
+func (p *planeA) SetAirport(airport airport.Airport) {
 	p.mediator = airport
 }
 
@@ -38,7 +38,7 @@ func (p *planeA) AddDelay(delay int) {
 	p.departureDelay += delay
 }
 
-// PrintDelay returns info about plane delay
+// PrintDelay returns info about plane_a delay
 func (p *planeA) PrintDelay() {
 	fmt.Println("Plane A delay: " + strconv.Itoa(p.departureDelay) + " hours")
 }

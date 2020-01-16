@@ -2,20 +2,21 @@ package main
 
 import (
 	"github.com/solympe/Golang_Training/pkg/pattern-mediator/airport"
-	"github.com/solympe/Golang_Training/pkg/pattern-mediator/plane"
+	"github.com/solympe/Golang_Training/pkg/pattern-mediator/plane_a"
+	"github.com/solympe/Golang_Training/pkg/pattern-mediator/plane_b"
 )
 
 func main() {
-	planeA := plane.NewPlaneA()
-	planeB := plane.NewPlaneB()
+	planeA := plane_a.NewPlaneA()
+	planeB := plane_b.NewPlaneB()
 
 	planeAirport := airport.NewAirport(planeA, planeB)
 
-	planeA.GetAirport(planeAirport)
-	planeB.GetAirport(planeAirport)
+	planeA.SetAirport(planeAirport)
+	planeB.SetAirport(planeAirport)
 
 	planeA.DelayFlight(3)
 	planeB.DelayFlight(2)
 
-	planeAirport.ShowStatistic()
+	planeAirport.ShowCommonDelay()
 }

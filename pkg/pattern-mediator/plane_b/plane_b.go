@@ -1,4 +1,4 @@
-package plane
+package plane_b
 
 import (
 	"fmt"
@@ -10,7 +10,7 @@ import (
 // BPlane ...
 type BPlane interface {
 	DelayFlight(delay int)
-	GetAirport(airport airport.Airport)
+	SetAirport(airport airport.Airport)
 	AddDelay(delay int)
 	PrintDelay()
 }
@@ -20,8 +20,8 @@ type planeB struct {
 	departureDelay int
 }
 
-// GetAirport sets mediator of plane_b
-func (p *planeB) GetAirport(airport airport.Airport) {
+// SetAirport sets mediator of plane_b
+func (p *planeB) SetAirport(airport airport.Airport) {
 	p.mediator = airport
 }
 
