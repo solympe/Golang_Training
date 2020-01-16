@@ -7,13 +7,13 @@ import (
 )
 
 func main() {
-	n5 := list.NewListNode(5, nil)
-	n4 := list.NewListNode(4, n5)
-	n3 := list.NewListNode(3, n4)
-	n2 := list.NewListNode(2, n3)
-	n1 := list.NewListNode(1, n2)
+	node5 := list.NewListNode(5, nil)
+	node4 := list.NewListNode(4, node5)
+	node3 := list.NewListNode(3, node4)
+	node2 := list.NewListNode(2, node3)
+	node1 := list.NewListNode(1, node2)
 
-	result := n1.ReverseList(n1)
+	result := node1.ReverseList()
 	for {
 		if result == nil {
 			break
