@@ -2,7 +2,7 @@ package treenode
 
 // TreeNode ...
 type TreeNode interface {
-	MergeTrees(t1 TreeNode, t2 TreeNode) TreeNode
+	MergeTrees(t2 TreeNode) TreeNode
 	GetLeft() TreeNode
 	GetRight() TreeNode
 	GetVal() int
@@ -18,7 +18,8 @@ type treeNode struct {
 }
 
 // MergeTrees ...
-func (t *treeNode) MergeTrees(t1 TreeNode, t2 TreeNode) TreeNode {
+func (t *treeNode) MergeTrees(t2 TreeNode) TreeNode {
+	t1 := t
 	if t1 == nil && t2 == nil {
 		return nil
 	}
@@ -27,11 +28,23 @@ func (t *treeNode) MergeTrees(t1 TreeNode, t2 TreeNode) TreeNode {
 	}
 
 	if t2 == nil {
+		if t1.val == 0 {
+			return nil
+		}
 		return t1
 	}
-	t1.setVal(t2.GetVal() + t1.GetVal())
-	t1.setLeft(t1.MergeTrees(t1.GetLeft(), t2.GetLeft()))
-	t1.setRight(t1.MergeTrees(t1.GetRight(), t2.GetRight()))
+	if t1.left == nil {
+		t1.left = NewTreeNode(0, nil, nil)
+	} else if t1.right == nil {
+		t1.right = NewTreeNode(0, nil, nil)
+	}
+	if t1.val == 0 {
+		return t2
+	}
+
+	t1.val += t2.GetVal()
+	t1.setLeft(t1.left.MergeTrees(t2.GetLeft()))
+	t1.setRight(t1.right.MergeTrees(t2.GetRight()))
 	return t1
 }
 
