@@ -15,8 +15,8 @@ func (a *android) GetType() string {
 }
 
 // NewAndroid ...
-func NewAndroid(andrType string) Android {
+func NewAndroid(androidType string) Android {
 	return &android{
-		typeOf: andrType,
+		typeOf: androidType,
 	}
 }

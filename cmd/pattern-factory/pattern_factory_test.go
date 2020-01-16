@@ -19,7 +19,7 @@ var tests = []testCase{
 func TestAndroidFactory(t *testing.T) {
 	for _, pairs := range tests {
 		androidFactory := factory.NewFactory()
-		android := androidFactory.CreateAndroid(pairs.input).GetType()
+		android := androidFactory.Create(pairs.input).GetType()
 		if android == pairs.waitType {
 			t.Log("Test passed! Waited:", pairs.waitType, ", Gave:", android)
 		} else {

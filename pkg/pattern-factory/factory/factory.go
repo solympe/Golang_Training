@@ -3,24 +3,29 @@ package factory
 import (
 	"log"
 
-	"github.com/solympe/Golang_Training/pkg/pattern-factory/android"
+	androids "github.com/solympe/Golang_Training/pkg/pattern-factory/android"
 )
+
+type android interface {
+	GetType() string
+}
 
 // Factory ...
 type Factory interface {
-	CreateAndroid(typeOf string) android.Android
+	Create(typeOf string) android
 }
 
-type factory struct{}
+type factory struct {
+}
 
-// CreateAndroid ...
-func (f *factory) CreateAndroid(typeOf string) android.Android {
-	var product android.Android
+// Create ...
+func (f *factory) Create(typeOf string) android {
+	var product android
 	switch typeOf {
 	case "evil":
-		product = android.NewAndroid("evil")
+		product = androids.NewAndroid("evil")
 	case "kind":
-		product = android.NewAndroid("kind")
+		product = androids.NewAndroid("kind")
 	default:
 		log.Fatal("Error! Unknown type")
 	}
@@ -29,5 +34,6 @@ func (f *factory) CreateAndroid(typeOf string) android.Android {
 
 // NewFactory ...
 func NewFactory() Factory {
-	return &factory{}
+	return &factory{
+	}
 }
