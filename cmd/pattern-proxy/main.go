@@ -9,11 +9,20 @@ import (
 )
 
 func main() {
+	var dataBase = database.NewDataBase()
 	var dataCache = cache.NewCache()
-	var dataBase = database.NewDataBase(dataCache)
-	var dbProxy = proxy.NewProxy(dataCache, dataBase)
 
-	dbProxy.Send("new data")
-	fmt.Println(dbProxy.GetData())
-	fmt.Println(dataBase.GetData())
+	var dbProxy = proxy.NewProxy(dataBase, dataCache)
+
+	dataBase.Set("new data" )
+	fmt.Println(dbProxy.Get())
+	fmt.Println(dataBase.Get())
+
+	dataBase.Set("new data2" )
+	fmt.Println(dbProxy.Get())
+	fmt.Println(dataBase.Get())
+
+	dbProxy.Set("data 3")
+	fmt.Println(dbProxy.Get())
+	fmt.Println(dataBase.Get())
 }

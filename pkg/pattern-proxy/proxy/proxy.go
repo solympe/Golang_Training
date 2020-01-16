@@ -2,8 +2,8 @@ package proxy
 
 // Proxy ...
 type Proxy interface {
-	GetData() string
-	Send(data string)
+	Get() (mySpecificData string)
+	Set(mySpecificData string)
 }
 
 type proxy struct {
@@ -11,19 +11,25 @@ type proxy struct {
 	dataBase Proxy
 }
 
-// Send updates data in the main database and cache
-func (p *proxy) Send(data string) {
-	Proxy.Send(p.cache, data)
-	Proxy.Send(p.dataBase, data)
+// Set ...
+func (p *proxy) Set(mySpecificData string) {
+	p.dataBase.Set(mySpecificData)
+	p.cache.Set(mySpecificData)
 }
 
-// GetData returns 'fresh' data from cache
-func (p *proxy) GetData() string {
-	freshData := Proxy.GetData(p.cache)
-	return freshData
+// Get returns data from cacheц
+func (p *proxy) Get() (mySpecificData string) {
+	mySpecificData = p.cache.Get()
+	if mySpecificData == "" {
+		mySpecificData = p.dataBase.Get()
+	}
+	return
 }
 
 // NewProxy returns new instance of proxy
-func NewProxy(cache Proxy, db Proxy) Proxy {
-	return &proxy{cache, db}
+func NewProxy(dataBase Proxy, cache Proxy) Proxy {
+	return &proxy{
+		dataBase: dataBase,
+		cache:    cache,
+	}
 }

@@ -1,26 +1,26 @@
 package cache
 
 // Cache ...
-type Сache interface {
-	GetData() string
-	Send(data string)
+type Cache interface {
+	Get() (mySpecificData string)
+	Set(mySpecificData string)
 }
 
 type cache struct {
-	data string
+	mySpecificData string
 }
 
-// GetData returns data from cache
-func (c *cache) GetData() string {
-	return c.data
+// Get returns data from cache
+func (c *cache) Get() string {
+	return c.mySpecificData
 }
 
-// Send updates data in cache
-func (c *cache) Send(data string) {
-	c.data = data
+// Set updates data in cache
+func (c *cache) Set(mySpecificData string) {
+	c.mySpecificData = mySpecificData
 }
 
 // NewCache returns new instance of cache
-func NewCache() Сache {
+func NewCache() Cache {
 	return &cache{}
 }
