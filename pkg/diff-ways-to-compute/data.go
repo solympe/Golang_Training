@@ -1,8 +1,6 @@
 package data
 
-import (
-	"strconv"
-)
+import "strconv"
 
 // Data ...
 type Data interface {
@@ -15,12 +13,11 @@ type data struct {
 
 // Compute ...
 func (d *data) Compute() []int {
+	var numbers []string
+	var operators []string
+	parsedInput := d.splitInput(d.input)
 
-	slice := d.splitInput(d.input)
-	numbers := []string{}
-	operators := []string{}
-
-	for _, i := range slice {
+	for _, i := range parsedInput {
 		if i == "+" || i == "-" || i == "*" {
 			operators = append(operators, i)
 		} else {
@@ -35,14 +32,14 @@ func (d *data) Compute() []int {
 	return d.recurCount(numbers, operators, 0, len(numbers)-1)
 }
 
-func (d *data) calculate(na int, x string, nb int) int {
+func (d *data) calculate(num1 int, x string, num2 int) int {
 	switch x {
 	case "+":
-		return na + nb
+		return num1 + num2
 	case "-":
-		return na - nb
+		return num1 - num2
 	case "*":
-		return na * nb
+		return num1 * num2
 	default:
 		panic("Input error")
 	}
