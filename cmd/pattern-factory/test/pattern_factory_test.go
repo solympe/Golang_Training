@@ -1,4 +1,4 @@
-package pattern_factory_test
+package test_test
 
 import (
 	"testing"
@@ -6,20 +6,22 @@ import (
 	"github.com/solympe/Golang_Training/pkg/pattern-factory/factory"
 )
 
+type transportType = string
+
 type testCase struct {
-	input    string
-	waitType string
+	input    transportType
+	waitType transportType
 }
 
 var tests = []testCase{
-	{"evil", "evil"},
-	{"kind", "kind"},
+	{"car", "car"},
+	{"track", "track"},
 }
 
 func TestAndroidFactory(t *testing.T) {
 	for _, pairs := range tests {
 		androidFactory := factory.NewFactory()
-		android := androidFactory.Create(pairs.input).GetType()
+		android := androidFactory.Create(pairs.input).Get()
 		if android == pairs.waitType {
 			t.Log("Test passed! Waited:", pairs.waitType, ", Gave:", android)
 		} else {
