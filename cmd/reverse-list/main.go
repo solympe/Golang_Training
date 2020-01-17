@@ -13,12 +13,12 @@ func main() {
 	node2 := list.NewListNode(2, node3)
 	node1 := list.NewListNode(1, node2)
 
-	result := node1.ReverseList()
+	result := node1.Reverse()
 	for {
 		if result == nil {
 			break
 		}
 		fmt.Println(result)
-		result = result.GetNext()
+		result = result.Next()
 	}
 }

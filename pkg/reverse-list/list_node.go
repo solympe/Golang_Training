@@ -2,9 +2,9 @@ package listnode
 
 // ListNode ...
 type ListNode interface {
-	ReverseList() ListNode
-	GetNext() ListNode
-	setNext(next ListNode)
+	Reverse() ListNode
+	Next() ListNode
+	set(next ListNode)
 }
 
 type listNode struct {
@@ -12,25 +12,24 @@ type listNode struct {
 	next ListNode
 }
 
-// ReverseList return reversed list
-func (l *listNode) ReverseList() ListNode {
-	head := l
-	if head == nil || head.next == nil {
-		return head
+// Reverse return reversed list
+func (node *listNode) Reverse() ListNode {
+	if node == nil || node.next == nil {
+		return node
 	}
-	revPoint := head.next.ReverseList()
-	head.next.setNext(head)
-	head.next = nil
+	revPoint := node.next.Reverse()
+	node.next.set(node)
+	node.next = nil
 	return revPoint
 }
 
-// GetNext ...
-func (l *listNode) GetNext() ListNode {
-	return l.next
+// Next ...
+func (node *listNode) Next() ListNode {
+	return node.next
 }
 
-func (l *listNode) setNext(next ListNode) {
-	l.next = next
+func (node *listNode) set(next ListNode) {
+	node.next = next
 }
 
 // NewListNode returns new element of list
