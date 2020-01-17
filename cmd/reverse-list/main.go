@@ -7,17 +7,14 @@ import (
 )
 
 func main() {
-	node5 := list.NewListNode(5, nil)
-	node4 := list.NewListNode(4, node5)
-	node3 := list.NewListNode(3, node4)
-	node2 := list.NewListNode(2, node3)
-	node1 := list.NewListNode(1, node2)
+	node5 := list.NewNode(5, nil)
+	node4 := list.NewNode(4, node5)
+	node3 := list.NewNode(3, node4)
+	node2 := list.NewNode(2, node3)
+	node1 := list.NewNode(1, node2)
 
 	result := node1.Reverse()
-	for {
-		if result == nil {
-			break
-		}
+	for result != nil {
 		fmt.Println(result)
 		result = result.Next()
 	}
