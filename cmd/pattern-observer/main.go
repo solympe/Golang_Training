@@ -6,16 +6,17 @@ import (
 )
 
 func main() {
-	newsPortal := news.NewNews()
+	publisher := news.NewNews()
 	subscriber1 := subscriber.NewSubscriber("John")
 	subscriber2 := subscriber.NewSubscriber("Jake")
+	subscriber3 := subscriber.NewSubscriber("Mike")
 
-	newsPortal.AddSubscriber(subscriber1)
-	newsPortal.AddSubscriber(subscriber2)
+	publisher.Add(subscriber1)
+	publisher.Add(subscriber2)
+	publisher.Add(subscriber3)
+	publisher.Delete(subscriber1)
 
-	newsPortal.DeleteSubscriber(subscriber1)
+	publisher.Show()
 
-	newsPortal.ShowSubscribers()
-
-	newsPortal.Notify("Message")
+	publisher.Notify("Message")
 }

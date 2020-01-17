@@ -2,24 +2,29 @@ package subscriber
 
 import "fmt"
 
+type (
+	name    = string
+	message = string
+)
+
 // Subscriber ...
 type Subscriber interface {
-	GetName() string
-	GetNotify(message string)
+	Get() name
+	Report(message)
 }
 
 type subscriber struct {
 	name string
 }
 
-// GetName return subscriber`s name
-func (s *subscriber) GetName() string {
+// Get return subscriber`s name
+func (s *subscriber) Get() name {
 	return s.name
 }
 
-// GetNotify returns recieved message
-func (s *subscriber) GetNotify(message string) {
-	fmt.Println("I am " + s.name + " and I received: " + message)
+// Report ...
+func (s *subscriber) Report(message string) {
+	fmt.Println(s.name + " received: " + message)
 }
 
 // NewSubscriber returns new copy of subscriber

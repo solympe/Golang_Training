@@ -1,37 +1,50 @@
 package news
 
-import (
-	"fmt"
+import "fmt"
 
-	"github.com/solympe/Golang_Training/pkg/pattern-observer/subscriber"
+type (
+	name    = string
+	message = string
 )
+
+type subscriber interface {
+	Get() name
+	Report(message)
+}
 
 // News ...
 type News interface {
-	AddSubscriber(subscriber subscriber.Subscriber)
-	DeleteSubscriber(subscriber subscriber.Subscriber)
-	ShowSubscribers()
-	Notify(message string)
+	Add(subscriber subscriber)
+	Delete(subscriber subscriber)
+	Show()
+	Notify(message)
 }
 
 type news struct {
-	subscribers map[subscriber.Subscriber]string
+	subscribers map[subscriber]name
 }
 
-// AddSubscriber writes new subscriber to map
-func (n *news) AddSubscriber(subscriber subscriber.Subscriber) {
-	name := subscriber.GetName()
+// Notify - sends a message to all subscribers
+func (n *news) Notify(message string) {
+	for concreteSubscriber, _ := range n.subscribers {
+		subscriber.Report(concreteSubscriber, message)
+	}
+}
+
+// Add writes new subscriber to map
+func (n *news) Add(subscriber subscriber) {
+	name := subscriber.Get()
 	n.subscribers[subscriber] = name
 }
 
-// DeleteSubscriber deletes subscriber from map
-func (n *news) DeleteSubscriber(subscriber subscriber.Subscriber) {
+// Delete deletes subscriber from map
+func (n *news) Delete(subscriber subscriber) {
 	delete(n.subscribers, subscriber)
 }
 
-// ShowSubscribers show actual subscribers
-func (n *news) ShowSubscribers() {
-	fmt.Print("Subscribers now: ")
+// Show show actual subscribers
+func (n *news) Show() {
+	fmt.Println("Subscribers now: ")
 	if len(n.subscribers) == 0 {
 		fmt.Println("empty")
 		return
@@ -41,14 +54,7 @@ func (n *news) ShowSubscribers() {
 	}
 }
 
-// Notify - sends a message to all subscribers
-func (n *news) Notify(message string) {
-	for key, _ := range n.subscribers {
-		subscriber.Subscriber.GetNotify(key, message)
-	}
-}
-
 // NewNews ...
 func NewNews() News {
-	return &news{map[subscriber.Subscriber]string{}}
+	return &news{map[subscriber]name{}}
 }
