@@ -3,13 +3,13 @@ package airport
 import "fmt"
 
 type (
-	model = string
-	delay = int
+	model     = string
+	delayTime = int
 )
 
 type plane interface {
-	Status() (model, delay)
-	Delay(delay)
+	Status() (model, delayTime)
+	Delay(delayTime)
 	Reset()
 	Set(Airport)
 }
@@ -22,18 +22,18 @@ type service interface {
 
 // Airport represents mediator methods
 type Airport interface {
-	Notify(plane, delay)
+	Notify(plane, delayTime)
 	SetPlane(plane)
 	SetService(service)
 	Status()
 }
 
 type airport struct {
-	planes  map[plane]delay
+	planes  map[plane]delayTime
 	service service
 }
 
-// Notify gets messages from plane count its delay
+// Notify gets messages from plane count its delayTime
 func (a *airport) Notify(plane plane, delay int) {
 	if a.errors() == true {
 		return
@@ -46,7 +46,7 @@ func (a *airport) Notify(plane plane, delay int) {
 	}
 }
 
-// Status prints information about delay
+// Status prints information about delayTime
 func (a *airport) Status() {
 	if a.errors() == true {
 		return
@@ -60,7 +60,7 @@ func (a *airport) Status() {
 // SetPlane ...
 func (a *airport) SetPlane(concretePlane plane) {
 	if a.planes == nil {
-		a.planes = make(map[plane]delay)
+		a.planes = make(map[plane]delayTime)
 	}
 	a.planes[concretePlane] = 0
 }

@@ -8,14 +8,14 @@ import (
 
 type (
 	model           = string
-	delay           = int
+	delayTime       = int
 	concreteAirport = airport.Airport
 )
 
 // Plane ...
 type Plane interface {
-	Status() (model, delay)
-	Delay(delay)
+	Status() (model, delayTime)
+	Delay(delayTime)
 	Reset()
 	Set(airport concreteAirport)
 }
@@ -48,7 +48,7 @@ func (p *plane) Reset() {
 }
 
 // Status ...
-func (p *plane) Status() (model, delay) {
+func (p *plane) Status() (model, delayTime) {
 	return p.model, p.delay
 }
 
