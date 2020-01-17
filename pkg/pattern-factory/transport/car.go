@@ -11,14 +11,13 @@ type car struct {
 	carType string
 }
 
-// Get ...
 func (a *car) Get() carType {
 	return a.carType
 }
 
 // NewCar ...
-func NewCar() Car {
+func NewCar(carType string) Car {
 	return &car{
-		carType: "car",
+		carType: carType,
 	}
 }

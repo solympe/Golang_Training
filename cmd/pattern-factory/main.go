@@ -4,14 +4,19 @@ import (
 	"fmt"
 
 	"github.com/solympe/Golang_Training/pkg/pattern-factory/factory"
+	"github.com/solympe/Golang_Training/pkg/pattern-factory/transport"
 )
 
 func main() {
-	transportFactory := factory.NewFactory()
+	transportFactory := factory.NewFactory(transport.NewCar, transport.NewTruck)
 
-	car := transportFactory.Create("car")
-	truck := transportFactory.Create("truck")
-
+	car, _ := transportFactory.Create("car")
+	truck, _ := transportFactory.Create("truck")
 	fmt.Println(car.Get())
 	fmt.Println(truck.Get())
+
+	_, err := transportFactory.Create("something")
+	if err != nil {
+		fmt.Println(err)
+	}
 }

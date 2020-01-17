@@ -1,12 +1,17 @@
 package factory
 
 import (
-	"log"
+	"errors"
 
 	"github.com/solympe/Golang_Training/pkg/pattern-factory/transport"
 )
 
-type transportType = string
+type (
+	transportType = string
+	err           = error
+	carCreator    func(carType string) transport.Car
+	truckCreator  func(truckType string) transport.Truck
+)
 
 type createdTransport interface {
 	Get() transportType
@@ -14,26 +19,31 @@ type createdTransport interface {
 
 // Factory ...
 type Factory interface {
-	Create(transportType) createdTransport
+	Create(transportType) (createdTransport, err)
 }
 
 type factory struct {
+	carCreator   carCreator
+	truckCreator truckCreator
 }
 
-// Create ...
-func (f *factory) Create(transportType string) (product createdTransport) {
+func (f *factory) Create(transportType string) (product createdTransport, err error) {
 	switch transportType {
 	case "truck":
-		product = transport.NewTruck()
+		product = f.truckCreator("truck")
+		return
 	case "car":
-		product = transport.NewCar()
-	default:
-		log.Fatal("Error! Unknown type of product")
+		product = f.carCreator("car")
+		return
 	}
-	return product
+	err = errors.New("creation error")
+	return
 }
 
 // NewFactory ...
-func NewFactory() Factory {
-	return &factory{}
+func NewFactory(carCreator carCreator, truckCreator truckCreator) Factory {
+	return &factory{
+		carCreator:   carCreator,
+		truckCreator: truckCreator,
+	}
 }

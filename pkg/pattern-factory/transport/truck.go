@@ -17,8 +17,8 @@ func (a *truck) Get() truckType {
 }
 
 // NewTruck ...
-func NewTruck() Truck {
+func NewTruck(truckType string) Truck {
 	return &truck{
-		truckType: "truck",
+		truckType,
 	}
 }
