@@ -3,15 +3,19 @@ package main
 import (
 	"fmt"
 
-	delivery "github.com/solympe/Golang_Training/pkg/pattern-chain-of-responsibility"
+	"github.com/solympe/Golang_Training/pkg/pattern-chain-of-responsibility/courier"
+	"github.com/solympe/Golang_Training/pkg/pattern-chain-of-responsibility/mail"
+	"github.com/solympe/Golang_Training/pkg/pattern-chain-of-responsibility/plane"
+	"github.com/solympe/Golang_Training/pkg/pattern-chain-of-responsibility/terminator"
 )
 
 func main() {
-	plane := delivery.NewPlane(nil)
-	courier := delivery.NewCourier(plane)
-	mail := delivery.NewMail(courier)
+	end := terminator.NewTerminator()
 
-	result := mail.Choose("plane")
+	deliveryPlane := plane.NewPlane(end)
+	deliveryCourier := courier.NewCourier(deliveryPlane)
+	deliveryMail := mail.NewMail(deliveryCourier)
 
+	result := deliveryMail.Choose("mail")
 	fmt.Println(result)
 }
