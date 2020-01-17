@@ -1,6 +1,11 @@
 package delivery
 
+type (
+	deliveryType = string
+	response     = string
+)
+
 // Delivery ...
 type Delivery interface {
-	ChooseDelivery(chosen string) string
+	Choose(chosen deliveryType) response
 }

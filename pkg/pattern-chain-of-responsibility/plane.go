@@ -3,20 +3,20 @@ package delivery
 import "strings"
 
 type plane struct {
-	nextType Delivery
+	next Delivery
 }
 
-// ChooseDelivery checking type of delivery (if plane == true -> stop here)
-func (d *plane) ChooseDelivery(chosen string) string {
+// Choose checking type of delivery (if plane == true -> stop here)
+func (d *plane) Choose(chosen deliveryType) response {
 	if strings.ToLower(chosen) == "plane" {
 		return "client choosed plane delivery"
-	} else if d.nextType != nil {
-		return d.nextType.ChooseDelivery(chosen)
+	} else if d.next != nil {
+		return d.next.Choose(chosen)
 	}
 	return "Delivery type error"
 }
 
 // NewPlane is aconstructor for plane delivery
 func NewPlane(del Delivery) Delivery {
-	return &plane{nextType: del}
+	return &plane{next: del}
 }

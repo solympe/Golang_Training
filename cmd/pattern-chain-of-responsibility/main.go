@@ -11,7 +11,7 @@ func main() {
 	courier := delivery.NewCourier(plane)
 	mail := delivery.NewMail(courier)
 
-	result := mail.ChooseDelivery("plane")
+	result := mail.Choose("plane")
 
 	fmt.Println(result)
 }
