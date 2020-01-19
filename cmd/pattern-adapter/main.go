@@ -1,0 +1,19 @@
+package main
+
+import (
+	"github.com/solympe/Golang_Training/pkg/pattern-adapter/horse"
+	"github.com/solympe/Golang_Training/pkg/pattern-adapter/pony"
+	"github.com/solympe/Golang_Training/pkg/pattern-adapter/rider"
+	"github.com/solympe/Golang_Training/pkg/pattern-adapter/saddle"
+)
+
+func main() {
+	ponyRider := rider.NewRider()
+	targetPony := pony.NewPony()
+
+	adapteeHorse := horse.NewHorse()
+	adapterSaddle := saddle.NewSaddle(adapteeHorse)
+
+	ponyRider.Ride(targetPony)
+	ponyRider.Ride(adapterSaddle)
+}
