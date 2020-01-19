@@ -23,5 +23,4 @@ Memory Usage: 8.3 MB, less than 50.00% of Go online submissions for Range Sum of
 
 ---
 P.S.<br>
-Main location: ./main.go<br>
-File location: ./leetcode/rangeSumBST/*
+<a href="https://leetcode.com/submissions/detail/285690279/">LEETCODE SOLUTION</a>
