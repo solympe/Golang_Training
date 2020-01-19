@@ -23,7 +23,7 @@ func (o *owner) VisitCompanies() string {
 	return result
 }
 
-// NewOwner ...
+// NewOwner ... TODO: Rewrite constructor on simple
 func NewOwner(companies ...company.Company) Owner {
 	var allCompanies []company.Company
 	for _, eachCompany := range companies {
