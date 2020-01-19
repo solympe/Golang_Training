@@ -15,5 +15,4 @@ Memory Usage: 2.9 MB, less than 33.33% of Go online submissions for Reverse Link
 
 ---
 P.S.<br>
-Main location: ./main.go<br>
-File location: ./leetcode/reverseList/*
+<a href="https://leetcode.com/submissions/detail/286416420/">LEETCODE SOLUTION</a>
