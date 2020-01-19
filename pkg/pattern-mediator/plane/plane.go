@@ -2,39 +2,59 @@ package plane
 
 import (
 	"fmt"
-	"strconv"
 
-	"github.com/solympe/Golang_Training/pkg/pattern-mediator/aeroflot"
 	"github.com/solympe/Golang_Training/pkg/pattern-mediator/airport"
 )
 
-// plane is a one of the colleague
+type (
+	model           = string
+	delayTime       = int
+	concreteAirport = airport.Airport
+)
+
+// Plane ...
+type Plane interface {
+	Status() (model, delayTime)
+	Delay(delayTime)
+	Reset()
+	Set(airport concreteAirport)
+}
+
 type plane struct {
-	mediator       airport.Airport
-	departureDelay int
+	model   string
+	delay   int
+	airport concreteAirport
 }
 
-// GetMediator sets mediator of plane
-func (p *plane) GetMediator(airport airport.Airport) {
-	p.mediator = airport
+// Set sets airport
+func (p *plane) Set(airport concreteAirport) {
+	p.airport = airport
+	p.airport.SetPlane(p)
 }
 
-// DelayFlight sends notify to mediator with delay time
-func (p *plane) DelayFlight(delay int) {
-	p.mediator.Notify("delay plane", delay)
+// Delay ...
+func (p *plane) Delay(delay int) {
+	if p.airport == nil {
+		fmt.Println("Airport init error for", p.model)
+		return
+	}
+	p.delay += delay
+	p.airport.Notify(p, delay)
 }
 
-// AddDelay add common delay time to plane
-func (p *plane) AddDelay(delay int) {
-	p.departureDelay += delay
+// Reset ...
+func (p *plane) Reset() {
+	p.delay = 0
 }
 
-// PrintDelay returns info about planes delay
-func (p *plane) PrintDelay() {
-	fmt.Println("Plane delay: " + strconv.Itoa(p.departureDelay) + " hours")
+// Status ...
+func (p *plane) Status() (model, delayTime) {
+	return p.model, p.delay
 }
 
-// NewHelicopter returns copy of new helicopter
-func NewPlane() aeroflot.Aeroflot {
-	return &plane{}
+// NewPlane returns copy of new plane
+func NewPlane(model string) Plane {
+	return &plane{
+		model: model,
+	}
 }
